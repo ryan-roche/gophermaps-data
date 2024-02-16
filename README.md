@@ -73,6 +73,8 @@ For now, select the "Draw Nodes" tool.
 We want a node on each of the "dots" on the reference image, and for the ways to match the lines on the image. For the tunnels that aren't straight lines, simply use multiple nodes.
 Alternatively, you can draw a straight line from the start to the end, switch to the move/select mode, and click the + in the middle of the line to bisect it with a new node, and move it into place.
 
+When you're done working, save the map.osm file and commit your changes to the git repository. JOSM will ask you if you want to upload the changes. DO NOT DO SO.
+
 ![ezgif-6-e78f4d904e](https://github.com/ryan-roche/gophermaps-data/assets/48164514/9db73d4c-58b7-4390-ad31-2ea6696b6df8)
 
 ### Mapping Standards
