@@ -60,7 +60,9 @@ First, make sure that the map data layer is selected. You'll know it's selected 
 ![ezgif-4-d667257780](https://github.com/ryan-roche/gophermaps-data/assets/48164514/ef22971c-13a1-419b-9ac7-b8b878c41fe0)
 
 Your mode/tool selection can be found on the left edge of the window. Tooltips are available if you hover your mouse, and the functionality is rather self-explanatory
+
 <img width="350" alt="image" src="https://github.com/ryan-roche/gophermaps-data/assets/48164514/03bdea47-e07d-4b27-a4d1-806db1cc32d9">
+
 For now, select the "Draw Nodes" tool.
 
 ![ezgif-6-323dafa56b](https://github.com/ryan-roche/gophermaps-data/assets/48164514/11b334ab-8092-4a85-9abb-f013d10d4f44)
