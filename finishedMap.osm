@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<josm-session version="0.1">
+    <viewport>
+        <center lat="44.975073896771534" lon="-93.23280485413139"/>
+        <scale meter-per-pixel="1.105181"/>
+    </viewport>
+    <projection>
+        <projection-choice>
+            <id>core:mercator</id>
+            <parameters/>
+        </projection-choice>
+        <code>EPSG:3857</code>
+    </projection>
+    <layers active="1">
+        <layer index="1" name="map.osm" type="osm-data" version="0.1" visible="true">
+            <file>file:/Users/kristine/Downloads/map.osm</file>
+        </layer>
+        <layer index="2" name="pts-gw-map.png" type="piclayerImage" version="0.1" visible="true">
+            <piclayerImage>
+                <file>/Applications/pts-gw-map.png</file>
+                <thumbnail>false</thumbnail>
+            </piclayerImage>
+        </layer>
+    </layers>
+</josm-session>
