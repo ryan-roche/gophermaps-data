@@ -1,3 +1,3 @@
 /thumbnails
 
-Thumbnail files go in their respective directories.
+Thumbnails for Areas and Buildings go here, in their respective directories.
