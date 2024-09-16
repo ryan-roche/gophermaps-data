@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.12 (gophermaps-backend)" />
+  </component>
+  <component name="DiscordProjectSettings">
+    <option name="show" value="ASK" />
+    <option name="description" value="" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="45d9717c-00f3-41da-b171-7117350e005f" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (gophermaps-data)" project-jdk-type="Python SDK" />
+</project>
