@@ -1,11 +1,11 @@
 BuildingName,floor,navID,thumbnail,image,buildingKey?,Area
 Mondale Hall,SP,mondSP,mondale.jpg,"""""",y,West Bank
 Willey Hall,G,willG,willey.jpg,"""""",y,West Bank
-Willey Hall,P,willP,willey.jpg,"""""",,West Bank
+Willey Hall,P,willP,willey.jpg,"""""",n,West Bank
 Andersen Library,G,ander1,andersen.jpg,"""""",y,West Bank
 West Bank Skyway,1,skyway1,skyway.jpg,"""""",y,West Bank
 Blegen Hall,1,bleg1,blegen.jpg,"""""",y,West Bank
-Blegen Hall,G,blegG,blegen.jpg,"""""",,West Bank
+Blegen Hall,G,blegG,blegen.jpg,"""""",n,West Bank
 Social Sciences,G,socG,social.jpg,"""""",y,West Bank
 Wilson Library,B,wilsonB,wilson.jpg,"""""",y,West Bank
 Anderson Hall,1,andor1,anderson.jpg,"""""",y,West Bank
@@ -13,7 +13,7 @@ Ferguson Hall,B,fergB,ferguson.jpg,"""""",y,West Bank
 Rarig Center,B,rarigB,rarig.jpg,"""""",y,West Bank
 Heller Hall,G,hellerG,heller.jpg,"""""",y,West Bank
 Humphrey School of Public Affairs,G,humpG,humphrey.jpg,"""""",y,West Bank
-Carlson School of Management,LL,carlsonLL,carlson.jpg,"""""",,West Bank
+Carlson School of Management,LL,carlsonLL,carlson.jpg,"""""",n,West Bank
 Carlson School of Management,2,carlson2,carlson.jpg,"""""",y,West Bank
 Hanson Hall,2,hanson2,hanson.jpg,"""""",y,West Bank
 19th Ave Ramp,3,19ave3,19ave.jpg,"""""",y,West Bank
