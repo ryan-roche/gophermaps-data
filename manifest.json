@@ -1,37 +1,43 @@
 {
+  "instructions": {
     "instructions": {
-        "kh4-me2": {
-            "last_modified": "2024-10-09T15:44:48.084976",
-            "files": [
-                "img1.png",
-                "img2.png",
-                "img3.png",
-                "img4.png",
-                "img5.png",
-                "instructions.md"
-            ]
-        },
-        "t1a-t1b": {
-            "last_modified": "2024-10-09T15:44:48.084976",
-            "files": [
-                "img1.jpg",
-                "img2.jpg",
-                "instructions.md"
-            ]
-        },
-        "t1b-t2a": {
-            "last_modified": "2024-10-09T15:44:48.084976",
-            "files": [
-                "img1.jpg",
-                "instructions.md"
-            ]
-        },
-        "t2a-t3a": {
-            "last_modified": "2024-10-09T15:44:48.084976",
-            "files": [
-                "img1.jpg",
-                "instructions.md"
-            ]
-        }
+      "last_modified": "2024-10-09 15:10:10 -0500",
+      "files": [
+        "README.md"
+      ]
+    },
+    "kh4-me2": {
+      "last_modified": "2024-10-09 15:10:10 -0500",
+      "files": [
+        "img4.png",
+        "instructions.md",
+        "img1.png",
+        "img2.png",
+        "img3.png",
+        "img5.png"
+      ]
+    },
+    "t1a-t1b": {
+      "last_modified": "2024-10-09 15:10:10 -0500",
+      "files": [
+        "img1.jpg",
+        "instructions.md",
+        "img2.jpg"
+      ]
+    },
+    "t1b-t2a": {
+      "last_modified": "2024-10-09 15:10:10 -0500",
+      "files": [
+        "img1.jpg",
+        "instructions.md"
+      ]
+    },
+    "t2a-t3a": {
+      "last_modified": "2024-10-09 15:10:10 -0500",
+      "files": [
+        "img1.jpg",
+        "instructions.md"
+      ]
     }
+  }
 }
