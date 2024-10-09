@@ -1,0 +1,40 @@
+name: Generate manifest.json
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'instructions/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'instructions/**'
+  workflow_dispatch:
+  
+jobs:
+  generate-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Generate manifest.json
+      run: python scripts/generate_manifest.py
+
+    - name: Commit changes
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+        git add manifest.json
+        git commit -m "Update manifest.json" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
