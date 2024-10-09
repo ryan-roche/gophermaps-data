@@ -12,6 +12,9 @@ on:
     paths:
       - 'instructions/**'
   workflow_dispatch:
+
+permissions:
+  contents: write
   
 jobs:
   generate-manifest:
