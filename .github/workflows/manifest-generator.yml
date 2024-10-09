@@ -27,7 +27,7 @@ jobs:
         python-version: '3.x'
 
     - name: Generate manifest.json
-      run: python generate_manifest.py
+      run: python scripts/generate_manifest.py
 
     - name: Commit changes
       run: |
