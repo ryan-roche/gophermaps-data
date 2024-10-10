@@ -33,5 +33,6 @@
         "instructions.md"
       ]
     }
-  }
+  },
+  "serverMessages": {}
 }
