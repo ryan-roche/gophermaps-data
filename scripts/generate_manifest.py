@@ -5,8 +5,9 @@ import subprocess
 # Get the absolute path of the directory where the script is located
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-# Get the path to the instructions directory relative to the script's location
+# Get the path to the instructions and serverMessages directories relative to the script's location
 instructions_directory = os.path.join(script_dir, '../instructions')
+server_messages_directory = os.path.join(script_dir, '../serverMessages')
 
 
 def get_last_commit_date_for_files(dirpath):
@@ -32,8 +33,8 @@ def get_last_commit_date_for_files(dirpath):
     return latest_commit_date
 
 
-def get_manifest_data(instructions_dir):
-    manifest = {'instructions': {}}
+def get_instructions_entry(instructions_dir):
+    instructions = {}
 
     for dirpath, dirnames, filenames in os.walk(instructions_dir):
         # Skip the root directory itself
@@ -47,23 +48,60 @@ def get_manifest_data(instructions_dir):
         dir_name = os.path.basename(dirpath)
 
         # Store the directory's information
-        manifest['instructions'][dir_name] = {
+        instructions[dir_name] = {
             'last_modified': last_modified,
             'files': filenames
         }
+
+    return instructions
+
+
+def get_server_messages_entry(server_messages_dir):
+    server_messages = {}
+
+    for dirpath, dirnames, filenames in os.walk(server_messages_dir):
+        # Skip the root directory itself
+        if dirpath == server_messages_dir:
+            continue
+
+        # Get the last modified date based on files in the directory
+        last_modified = get_last_commit_date_for_files(dirpath)
+
+        # Extract the directory name
+        dir_name = os.path.basename(dirpath)
+
+        # Store the directory's information
+        server_messages[dir_name] = {
+            'last_modified': last_modified,
+            'files': filenames
+        }
+
+    return server_messages
+
+
+def get_manifest_data():
+    manifest = {}
+
+    # Process the instructions directory
+    if os.path.exists(instructions_directory):
+        manifest['instructions'] = get_instructions_entry(instructions_directory)
+    else:
+        print(f"Error: {instructions_directory} does not exist.")
+
+    # Process the serverMessages directory
+    if os.path.exists(server_messages_directory):
+        manifest['serverMessages'] = get_server_messages_entry(server_messages_directory)
+    else:
+        print(f"Error: {server_messages_directory} does not exist.")
 
     return manifest
 
 
 if __name__ == "__main__":
-    # Ensure the instructions directory exists
-    if os.path.exists(instructions_directory):
-        # Generate the manifest data
-        manifest_data = get_manifest_data(instructions_directory)
+    # Generate the manifest data
+    manifest_data = get_manifest_data()
 
-        # Write the output to the root directory
-        manifest_path = os.path.join(script_dir, '../manifest.json')
-        with open(manifest_path, 'w') as f:
-            json.dump(manifest_data, f, indent=2)
-    else:
-        print(f"Error: {instructions_directory} does not exist.")
+    # Write the output to the root directory
+    manifest_path = os.path.join(script_dir, '../manifest.json')
+    with open(manifest_path, 'w') as f:
+        json.dump(manifest_data, f, indent=2)
