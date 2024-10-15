@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'instructions/**'
+      - 'serverMessages/**'
   pull_request:
     branches:
       - main
