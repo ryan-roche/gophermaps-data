@@ -70,13 +70,27 @@ def get_server_messages_entry(server_messages_dir):
         # Extract the directory name
         dir_name = os.path.basename(dirpath)
 
-        # Store the directory's information
+        # Initialize a list to hold file contents
+        file_contents = []
+
+        for filename in filenames:
+            file_path = os.path.join(dirpath, filename)
+            try:
+                with open(file_path, 'r') as file:
+                    content = file.read()
+                    file_contents.append(content)  # Add file content to the list
+            except Exception as e:
+                print(f"Error reading {file_path}: {e}")
+
+        # Store the directory's information including file contents
         server_messages[dir_name] = {
             'last_modified': last_modified,
-            'files': filenames
+            'files': filenames,
+            'contents': file_contents  # Add the file contents to the entry
         }
 
     return server_messages
+
 
 
 def get_manifest_data():
