@@ -59,38 +59,22 @@ def get_instructions_entry(instructions_dir):
 def get_server_messages_entry(server_messages_dir):
     server_messages = {}
 
-    for dirpath, dirnames, filenames in os.walk(server_messages_dir):
-        # Skip the root directory itself
-        if dirpath == server_messages_dir:
-            continue
+    for filename in os.listdir(server_messages_dir):
+        file_path = os.path.join(server_messages_dir, filename)
 
-        # Get the last modified date based on files in the directory
-        last_modified = get_last_commit_date_for_files(dirpath)
-
-        # Extract the directory name
-        dir_name = os.path.basename(dirpath)
-
-        # Initialize a list to hold file contents
-        file_contents = []
-
-        for filename in filenames:
-            file_path = os.path.join(dirpath, filename)
+        if os.path.isfile(file_path) and filename.endswith('.json'):
             try:
+                # Read and parse the JSON content of the file
                 with open(file_path, 'r') as file:
-                    content = file.read()
-                    file_contents.append(content)  # Add file content to the list
+                    content = json.load(file)
+                    server_messages[filename] = content  # Add content directly under the filename
+                    print(f"Successfully read {file_path}")  # Debug statement
+            except json.JSONDecodeError:
+                print(f"Error decoding JSON from {file_path}")  # Error handling for JSON decode errors
             except Exception as e:
-                print(f"Error reading {file_path}: {e}")
-
-        # Store the directory's information including file contents
-        server_messages[dir_name] = {
-            'last_modified': last_modified,
-            'files': filenames,
-            'contents': file_contents  # Add the file contents to the entry
-        }
+                print(f"Error reading {file_path}: {e}")  # General error handling
 
     return server_messages
-
 
 
 def get_manifest_data():
