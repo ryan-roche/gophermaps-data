@@ -57,7 +57,7 @@ def get_instructions_entry(instructions_dir):
 
 
 def get_server_messages_entry(server_messages_dir):
-    server_messages = {}
+    server_messages = []
 
     for filename in os.listdir(server_messages_dir):
         file_path = os.path.join(server_messages_dir, filename)
@@ -67,7 +67,7 @@ def get_server_messages_entry(server_messages_dir):
                 # Read and parse the JSON content of the file
                 with open(file_path, 'r') as file:
                     content = json.load(file)
-                    server_messages[filename] = content  # Add content directly under the filename
+                    server_messages.append(content)  # Append only the content to the list
                     print(f"Successfully read {file_path}")  # Debug statement
             except json.JSONDecodeError:
                 print(f"Error decoding JSON from {file_path}")  # Error handling for JSON decode errors
