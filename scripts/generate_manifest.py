@@ -71,17 +71,20 @@ def get_server_messages_entry(server_messages_dir):
                     content = json.load(file)
                     # Parse the endDate as a datetime object
                     end_date = datetime.fromisoformat(content.get('endDate'))
-                    
+
                     # Check if the endDate is in the future
                     if end_date > current_time:
-                        server_messages.append(content)  # Append only the content to the list
-                        print(f"Included message from {file_path} with endDate {content.get('endDate')}")
+                        # Generate a content-based hash ID for the message
+                        message_id = generate_content_hash(content)
+                        content['id'] = message_id  # Add the ID to the message
+                        server_messages.append(content)
+                        print(f"Included message from {file_path} with ID {message_id}")
                     else:
                         print(f"Excluded message from {file_path} due to past endDate {content.get('endDate')}")
             except json.JSONDecodeError:
-                print(f"Error decoding JSON from {file_path}")  # Error handling for JSON decode errors
+                print(f"Error decoding JSON from {file_path}")
             except Exception as e:
-                print(f"Error reading {file_path}: {e}")  # General error handling
+                print(f"Error reading {file_path}: {e}")
 
     return server_messages
 
