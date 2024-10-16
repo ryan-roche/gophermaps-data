@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 import os
 import json
+import hashlib
 import subprocess
 
 # Get the absolute path of the directory where the script is located
@@ -55,6 +56,13 @@ def get_instructions_entry(instructions_dir):
         }
 
     return instructions
+
+
+def generate_content_hash(content):
+    # Convert the message content into a JSON string, ensuring consistent key order
+    message_str = json.dumps(content, sort_keys=True)
+    # Create a SHA-256 hash of the JSON string
+    return hashlib.sha256(message_str.encode('utf-8')).hexdigest()
 
 
 def get_server_messages_entry(server_messages_dir):
