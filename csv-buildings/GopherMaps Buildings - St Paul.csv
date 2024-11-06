@@ -1,0 +1,9 @@
+BuildingName,floor,navID,thumbnail,image,buildingKey?,Area
+Bailey Hall,2,bailey2,bailey.png,"""""",y,St Paul Campus
+Bailey Dining Hall,2,baileyDining2,baileyDining.jpg,"""""",y,St Paul Campus
+St. Paul Student Center,2,stPaStuCe2,stPaulCenter.jpg,"""""",y,St Paul Campus
+St. Paul Student Center,B,stPaStuCeB,stPaulCenter.jpg,"""""",,St Paul Campus
+Coffey Hall,B,coffeyB,coffey.jpg,"""""",y,St Paul Campus
+Ruttan Hall,G,ruttanG,ruttan.jpg,"""""",y,St Paul Campus
+Magrath Library,G,magrathG,magrath.jpg,"""""",y,St Paul Campus
+Learning & Environmental Sciences,3,envSci3,envSci.jpg,"""""",y,St Paul Campus

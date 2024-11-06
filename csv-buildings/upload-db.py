@@ -63,7 +63,7 @@ def create_edge(tx, row):
 
 
 # Create nodes using the buildings CSV file
-with open('GopherMaps Buildings - West Bank.csv', mode='r') as file:
+with open('GopherMaps Buildings - St Paul.csv', mode='r') as file:
     csv_reader = csv.DictReader(file)
 
     with driver.session() as session:
@@ -72,7 +72,7 @@ with open('GopherMaps Buildings - West Bank.csv', mode='r') as file:
 
 
 # Create edges using the edges CSV file
-with open('GopherMaps Buildings - West Bank Edges.csv', mode='r') as file:
+with open('GopherMaps Buildings - St Paul Edges.csv', mode='r') as file:
     csv_reader = csv.DictReader(file)
 
     with driver.session() as session:
