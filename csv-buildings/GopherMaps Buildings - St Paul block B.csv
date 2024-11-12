@@ -1,0 +1,23 @@
+BuildingName,floor,navID,thumbnail,image,buildingKey?,area
+Animal Science & Veterenary Medicine,1,asvm1,asvm.jpg,"""""",y,St Paul Campus
+Veterinary Medical Center North,3,vetmedctrn3,vetmedctrn.jpg,"""""",y,St Paul Campus
+Veterinary Medical Center South,3,vetmedctrs3,vetmedctrs.jpg,"""""",y,St Paul Campus
+Veterinary Diagnostic Lab,3,vetDiagnostic3,vetDiagnostic.jpg,"""""",y,St Paul Campus
+Veterinary Science,3,vetScience3,vetScience.jpg,"""""",y,St Paul Campus
+Green Hall,G,greenG,green.jpg,"""""",y,St Paul Campus
+Skok Hall,G,skokG,skok.jpg,"""""",y,St Paul Campus
+Skok Hall,B,skokB,skok.jpg,"""""",,St Paul Campus
+Kaufert Lab,1,kaufert1,kaufert.jpg,"""""",y,St Paul Campus
+Hodson Hall,2,hodson2,hodson.jpg,"""""",y,St Paul Campus
+Alderman Hall,2,alderman2,alderman.jpg,"""""",y,St Paul Campus
+Soil Science,2,soil2,soil.jpg,"""""",y,St Paul Campus
+Borlaug Hall,2,borlaug2,borlaug.jpg,"""""",y,St Paul Campus
+Stakman Hall,2,stakman2,stakman.jpg,"""""",y,St Paul Campus
+Christensen Lab,2,christ2,christensen.jpg,"""""",y,St Paul Campus
+Hayes Hall,2,hayes2,hayes.jpg,"""""",y,St Paul Campus
+Ecology Building,1,ecology1,ecology.jpg,"""""",y,St Paul Campus
+Ecology Building,B,ecologyB,ecology.jpg,"""""",,St Paul Campus
+McNeal Hall,L,mcnealL,mcneal.jpg,"""'",y,St Paul Campus
+Gortner Lab,B,gortnerB,gortner.jpg,"""""",y,St Paul Campus
+Snyder Hall,B,snyderB,snyer.jpg,"""""",y,St Paul Campus
+Biological Sciences Center,1,biologSci1,biologsci.jpg,"""""",y,St Paul Campus

@@ -1,0 +1,37 @@
+BuildingName,floor,navID,thumbnail,image,buildingKey?,Area
+Coffman Memorial Union,G,coffmanG,coffman.jpg,"""""",y,East Bank
+Coffman Memorial Union,T,coffmanT,coffman.jpg,"""""",,East Bank
+Coffman Memorial Union,B,coffmanB,coffman.jpg,"""""",,East Bank
+East River Road Garage,A,eastRivRdA,eastRiverRoad.jpg,"""""",y,East Bank
+Hasselmo Hall,1,hass1,hasselmo.jpg,"""""",y,East Bank
+Hasselmo Hall,4,hass4,hasselmo.jpg,"""""",,East Bank
+Boynton Health Service,2,boynton2,boynton.jpg,"""""",y,East Bank
+Jackson Hall,4,jackson4,jackson.jpg,"""""",y,East Bank
+Jackson Hall,3,jackson3,jackson.jpg,"""""",,East Bank
+Mayo Building & Additions,1,mayo1,mayo.jpg,"""""",y,East Bank
+Mayo Building & Additions,2,mayo2,mayo.jpg,"""""",,East Bank
+Mayo Building & Additions,3,mayo3,mayo.jpg,"""""",,East Bank
+Masonic Cancer Research Building,3,masCan3,dwan.jpg,"""""",y,East Bank
+Masonic Cancer Research Building,2,masCan2,dwan.jpg,"""""",,East Bank
+Variety Club Research Center,4,variety4,dwan.jpg,"""""",y,East Bank
+Variety Club Research Center,B,varietyB,dwan.jpg,"""""",,East Bank
+Children's Rehabilitation Center,1,child1,child.jpg,"""""",y,East Bank
+Children's Rehabilitation Center,6,child6,child.jpg,"""""",,East Bank
+Molecular & Cellualar Biology,3,molecule3,mcb.jpg,"""""",y,East Bank
+Molecular & Cellualar Biology,2,molecule2,mcb.jpg,"""""",,East Bank
+Moos Tower,2,moos2,moos.jpg,"""""",y,East Bank
+Philips-Wangensteen Building,2,pwb2,pwb.jpg,"""""",y,East Bank
+Diehl Hall,2,diehl2,diehl.jpg,"""""",y,East Bank
+Fairview Medical Center,1,fairview1,fairview.jpg,"""""",y,East Bank
+Fairview Medical Center,2,fairview2,fairview.jpg,"""""",,East Bank
+Health Sciences Education Center,2,hsec2,hsec.jpg,"""""",y,East Bank
+Health Sciences Education Center,1,hsec1,hsec.jpg,"""""",,East Bank
+Weaver-Densford Hall,2,weaver2,weaver.jpg,"""""",y,East Bank
+Washington Avenue Ramp,B,washRampB,washRamp.jpg,"""""",,East Bank
+Washington Avenue Ramp,3,washRamp3,washRamp.jpg,"""""",y,East Bank
+"Parking, Transportation, & Safety Building",2,pts2,pts.jpg,"""""",y,East Bank
+Graduate Hotel,2,graddy2,graddy.jpg,"""""",y,East Bank
+Graduate Hotel,LL,graddyLL,graddy.jpg,"""""",,East Bank
+McNamara Alumni Center,B,mcnamaraB,macnamara.jpg,"""""",y,East Bank
+University Avenue Ramp,B,universityRampB,univAveRamp.jpg,"""""",y,East Bank
+Hospital Patient & Visitor Ramp,T,hospitalRamp,hospitalRamp.jpg,"""""",y,East Bank

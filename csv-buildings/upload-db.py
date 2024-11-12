@@ -31,6 +31,7 @@ def create_node(tx, row):
 
     # Remove the 'buildingKey?' field from the row since it's not a node property
     properties = {k: v for k, v in row.items() if k != 'buildingKey?'}
+    properties['hasInstructions'] = False
 
     # Construct the Cypher query with dynamic labels and properties
     query = f"""
@@ -63,7 +64,7 @@ def create_edge(tx, row):
 
 
 # Create nodes using the buildings CSV file
-with open('GopherMaps Buildings - St Paul.csv', mode='r') as file:
+with open('GopherMaps Buildings - East Bank South Buildings.csv', mode='r') as file:
     csv_reader = csv.DictReader(file)
 
     with driver.session() as session:
@@ -72,7 +73,7 @@ with open('GopherMaps Buildings - St Paul.csv', mode='r') as file:
 
 
 # Create edges using the edges CSV file
-with open('GopherMaps Buildings - St Paul Edges.csv', mode='r') as file:
+with open('GopherMaps Buildings - East Bank South Building Edges.csv', mode='r') as file:
     csv_reader = csv.DictReader(file)
 
     with driver.session() as session:
