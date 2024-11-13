@@ -89,8 +89,8 @@ def get_server_messages_entry(server_messages_dir):
                         print(f"Included message from {file_path} with ID {message_id}")
                     else:
                         print(f"Excluded message from {file_path} due to past endDate {content.get('endDate')}")
-            except json.JSONDecodeError:
-                print(f"Error decoding JSON from {file_path}")
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON from {file_path}: {e}")
             except Exception as e:
                 print(f"Error reading {file_path}: {e}")
 
