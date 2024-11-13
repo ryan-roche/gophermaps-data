@@ -34,5 +34,18 @@
       ]
     }
   },
-  "serverMessages": []
+  "serverMessages": [
+    {
+      "startDate": "2024-11-01T00:00:00-06:00",
+      "endDate": "2024-11-30T00:00:00-06:00",
+      "colors": [
+        "#A462D0",
+        "#4489C0",
+        "#6CAAEB"
+      ],
+      "title": "Southern East Bank Buildings Added!",
+      "body": "The \"island\" of buildings on East Bank that are south of Washington Avenue are now available in GopherMaps. This includes buildings like Coffman, Boynton, and Moos Tower.\\n\\n ![image](https://github.com/ryan-roche/gophermaps-data/blob/dca6de884bdf3308212d00d349bca1ced7f7f63e/serverMessages/southEastBank.png?raw=true)\\n\\n With this addition, we now have every building on campus accounted for in the app!\\n\\n ## What's next?\\n\\n ### More Instructions Coming Soon!\\n\\n With help from USG, we're working hard on getting detailed instructions written for all the building connections in the Gopher Way.\\n\\n We're trying to start with the trickier connections first, but aim to eventually have instructions written for *every* link in the Gopher Way.\\n\\n This is a very large undertaking, so we appreciate your patience as we work to write these instructions.\\n\\n ### UI Updates & New Functionality\\n\\n In addition to fixing a few UI bugs, we're working on adding an offline mode. That way, you can view your saved routes and their instructions (when available) even if you aren't connected to the internet.\\n\\n ### Accessibility\\n\\n We're also working on integrating the GopherMaps app with all of iOS's Accessibility features such as VoiceOver and Switch Control. These features are a bit more involved to get implemented, so stay tuned!",
+      "id": "14b0c084bcfd2cadfdfd9e4ea9e40ab826fb1a94c43b41c8187aab19b0f52712"
+    }
+  ]
 }
