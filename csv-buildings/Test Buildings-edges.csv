@@ -1,0 +1,10 @@
+Test Building 1,1,Test Building 2,1,tb1-tb2
+Test Building 2,1,Test Building 1,1,tb2-tb1
+Test Building 2,1,Test Building 2,2,tb2-tb2a
+Test Building 2,2,Test Building 2,1,tb2a-tb2
+Test Building 2,2,Test Building 3,2,tb2a-tb3
+Test Building 3,2,Test Building 2,2,tb3-tb2a
+Test Building 4,1,Test Building 1,1,tb4-tb1
+Test Building 1,1,Test Building 4,1,tb1-tb4
+Test Building 4,1,Test Building 2,1,tb4-tb2
+Test Building 2,1,Test Building 4,1,tb2-tb4

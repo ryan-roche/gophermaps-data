@@ -1,0 +1,166 @@
+Keller Hall,2,Keller Hall,4,kh2-kh4
+Keller Hall,4,Keller Hall,2,kh4-kh2
+Keller Hall,2,Amundson Hall,2,kh2-ahB
+Amundson Hall,2,Keller Hall,2,ahB-kh2
+Keller Hall,4,Mechanical Engineering,2,kh4-me2
+Mechanical Engineering,2,Keller Hall,4,me2-kh4
+Mechanical Engineering,2,Mechanical Engineering,B,me2-meB
+Mechanical Engineering,B,Mechanical Engineering,2,meB-me2
+Mechanical Engineering,2,Rapson Hall,2,me2-rh2
+Rapson Hall,2,Mechanical Engineering,2,rh2-me2
+Mechanical Engineering,2,Lind Hall,2,me2-lh2
+Lind Hall,2,Mechanical Engineering,2,lh2-me2
+Mechanical Engineering,2,Akerman Hall,2,me2-2
+Akerman Hall,2,Mechanical Engineering,2,2-me2
+Mechanical Engineering,B,Tate Hall,SB,meB-thSB
+Tate Hall,SB,Mechanical Engineering,B,thSB-meB
+Tate Hall,SB,Tate Hall,B,thSB-thB
+Tate Hall,B,Tate Hall,SB,thB-thSB
+Tate Hall,SB,Morrill Hall,B,thSB-mrllB
+Morrill Hall,B,Tate Hall,SB,mrllB-thSB
+Tate Hall,B,Murphy Hall,B,thB-mrphB
+Murphy Hall,B,Tate Hall,B,mrphB-thB
+Rapson Hall,2,Rapson Hall,B,rh2-rhB
+Rapson Hall,B,Rapson Hall,2,rhB-rh2
+Rapson Hall,B,Civil Engineering,2,rhB-ce2
+Civil Engineering,2,Rapson Hall,B,ce2-rhB
+Rapson Hall,B,Shepherd Labs,B,rhB-slB
+Shepherd Labs,B,Rapson Hall,B,slB-rhB
+Shepherd Labs,B,Shepherd Labs,2,slB-sl2
+Shepherd Labs,2,Shepherd Labs,B,sl2-slB
+Akerman Hall,2,Shepherd Labs,2,2-sl2
+Shepherd Labs,2,Akerman Hall,2,sl2-2
+Murphy Hall,B,Murphy Hall,2,mrphB-mrph2
+Murphy Hall,2,Murphy Hall,B,mrph2-mrphB
+Murphy Hall,B,Ford Hall,B,mrphB-fordB
+Ford Hall,B,Murphy Hall,B,fordB-mrphB
+Murphy Hall,2,Vincent Hall,2,mrph2-vh2
+Vincent Hall,2,Murphy Hall,2,vh2-mrph2
+Morrill Hall,B,Morrill Hall,G,mrllB-mrllG
+Morrill Hall,G,Morrill Hall,B,mrllG-mrllB
+Morrill Hall,G,Northrop Garage,T,mrllG-norgra
+Northrop Garage,T,Morrill Hall,G,norgra-mrllG
+Northrop Garage,T,Northrop,B,norgra-norB
+Northrop,B,Northrop Garage,T,norB-norgra
+Northrop Garage,T,Johnston Hall,B,norgra-johnB
+Johnston Hall,B,Northrop Garage,T,johnB-norgra
+Northrop Garage,T,Church Street Garage,A,norgra-chstgr
+Church Street Garage,A,Northrop Garage,T,chstgr-norgra
+Northrop,B,Church Street Garage,A,norB-chstgr
+Church Street Garage,A,Northrop,B,chstgr-norB
+Johnston Hall,B,Walter Library,B,johnB-waltB
+Walter Library,B,Johnston Hall,B,waltB-johnB
+Walter Library,B,Smith Hall,B,waltB-smthB
+Smith Hall,B,Walter Library,B,smthB-waltB
+Smith Hall,B,Smith Hall,SB,smthB-smthSB
+Smith Hall,SB,Smith Hall,B,smthSB-smthB
+Smith Hall,SB,Kolthoff Hall,1,smthSB-klth1
+Kolthoff Hall,1,Smith Hall,SB,klth1-smthSB
+Church Street Garage,A,Pillsbury Hall,B,chstgr-pillB
+Pillsbury Hall,B,Church Street Garage,A,pillB-chstgr
+Church Street Garage,A,Williamson Hall,2,chstgr-will2
+Williamson Hall,2,Church Street Garage,A,will2-chstgr
+Church Street Garage,A,Nolte Center,B,chstgr-noltB
+Nolte Center,B,Church Street Garage,A,noltB-chstgr
+Pillsbury Hall,B,Williamson Hall,2,pillB-will2
+Williamson Hall,2,Pillsbury Hall,B,will2-pillB
+Pillsbury Hall,B,Nolte Center,B,pillB-noltB
+Nolte Center,B,Pillsbury Hall,B,noltB-pillB
+Williamson Hall,2,Nolte Center,B,will2-noltB
+Nolte Center,B,Williamson Hall,2,noltB-will2
+Williamson Hall,2,Jones Hall,T,will2-jonesT
+Jones Hall,T,Williamson Hall,2,jonesT-will2
+Nolte Center,B,Nolte Center Garage,G,noltB-nolGra
+Nolte Center Garage,G,Nolte Center,B,nolGra-noltB
+Nolte Center Garage,G,10 Church St,B,nolGra-10chust
+10 Church St,B,Nolte Center Garage,G,10chust-nolGra
+Nolte Center Garage,G,Folwell Hall,T,nolGra-folwel
+Folwell Hall,T,Nolte Center Garage,G,folwel-nolGra
+Coffman Memorial Union,G,Coffman Memorial Union,T,coffmanG-coffmanT
+Coffman Memorial Union,T,Coffman Memorial Union,G,coffmanT-coffmanG
+Coffman Memorial Union,T,East River Road Garage,A,coffmanT-eastRivRdA
+East River Road Garage,A,Coffman Memorial Union,T,eastRivRdA-coffmanT
+Coffman Memorial Union,T,Coffman Memorial Union,B,coffmanT-coffmanB
+Coffman Memorial Union,B,Coffman Memorial Union,T,coffmanB-coffmanT
+Coffman Memorial Union,B,Hasselmo Hall,1,coffmanB-hass1
+Hasselmo Hall,1,Coffman Memorial Union,B,hass1-coffmanB
+Coffman Memorial Union,B,Boynton Health Service,2,coffmanB-boynton2
+Boynton Health Service,2,Coffman Memorial Union,B,boynton2-coffmanB
+Coffman Memorial Union,B,Mayo Building & Additions,1,coffmanB-mayo1
+Mayo Building & Additions,1,Coffman Memorial Union,B,mayo1-coffmanB
+Coffman Memorial Union,B,Coffman Memorial Union,G,coffmanB-coffmanG
+Coffman Memorial Union,G,Coffman Memorial Union,B,coffmanG-coffmanB
+Hasselmo Hall,1,Boynton Health Service,2,hass1-boynton2
+Boynton Health Service,2,Hasselmo Hall,1,boynton2-hass1
+Hasselmo Hall,1,Mayo Building & Additions,1,hass1-mayo1
+Mayo Building & Additions,1,Hasselmo Hall,1,mayo1-hass1
+Hasselmo Hall,1,Hasselmo Hall,4,hass1-hass4
+Hasselmo Hall,4,Hasselmo Hall,1,hass4-hass1
+Hasselmo Hall,4,Jackson Hall,4,hass4-jackson4
+Jackson Hall,4,Hasselmo Hall,4,jackson4-hass4
+Jackson Hall,3,Molecular & Cellualar Biology,3,jackson3-molecule3
+Molecular & Cellualar Biology,3,Jackson Hall,3,molecule3-jackson3
+Jackson Hall,3,Jackson Hall,4,jackson3-jackson4
+Jackson Hall,4,Jackson Hall,3,jackson4-jackson3
+Mayo Building & Additions,1,Boynton Health Service,2,mayo1-boynton2
+Boynton Health Service,2,Mayo Building & Additions,1,boynton2-mayo1
+Mayo Building & Additions,1,Mayo Building & Additions,2,mayo1-mayo2
+Mayo Building & Additions,2,Mayo Building & Additions,1,mayo2-mayo1
+Mayo Building & Additions,2,Philips-Wangensteen Building,2,mayo2-pwb2
+Philips-Wangensteen Building,2,Mayo Building & Additions,2,pwb2-mayo2
+Mayo Building & Additions,2,Mayo Building & Additions,3,mayo2-mayo3
+Mayo Building & Additions,3,Mayo Building & Additions,2,mayo3-mayo2
+Mayo Building & Additions,3,Masonic Cancer Research Building,3,mayo3-masCan3
+Masonic Cancer Research Building,3,Mayo Building & Additions,3,masCan3-mayo3
+Mayo Building & Additions,3,Mayo Building & Additions,1,mayo3-mayo1
+Mayo Building & Additions,1,Mayo Building & Additions,3,mayo1-mayo3
+Masonic Cancer Research Building,3,Fairview Medical Center,2,masCan3-fairview2
+Fairview Medical Center,2,Masonic Cancer Research Building,3,fairview2-masCan3
+Masonic Cancer Research Building,2,Variety Club Research Center,4,masCan2-variety4
+Variety Club Research Center,4,Masonic Cancer Research Building,2,variety4-masCan2
+Variety Club Research Center,B,Variety Club Research Center,4,varietyB-variety4
+Variety Club Research Center,4,Variety Club Research Center,B,variety4-varietyB
+Children's Rehabilitation Center,1,Variety Club Research Center,B,child1-varietyB
+Variety Club Research Center,B,Children's Rehabilitation Center,1,varietyB-child1
+Children's Rehabilitation Center,1,Children's Rehabilitation Center,6,child1-child6
+Children's Rehabilitation Center,6,Children's Rehabilitation Center,1,child6-child1
+Children's Rehabilitation Center,6,Mayo Building & Additions,3,child6-mayo3
+Mayo Building & Additions,3,Children's Rehabilitation Center,6,mayo3-child6
+Molecular & Cellualar Biology,3,Mayo Building & Additions,3,molecule3-mayo3
+Mayo Building & Additions,3,Molecular & Cellualar Biology,3,mayo3-molecule3
+Molecular & Cellualar Biology,2,Moos Tower,2,molecule2-moos2
+Moos Tower,2,Molecular & Cellualar Biology,2,moos2-molecule2
+Molecular & Cellualar Biology,2,Molecular & Cellualar Biology,3,molecule2-molecule3
+Molecular & Cellualar Biology,3,Molecular & Cellualar Biology,2,molecule3-molecule2
+Moos Tower,2,Philips-Wangensteen Building,2,moos2-pwb2
+Philips-Wangensteen Building,2,Moos Tower,2,pwb2-moos2
+Moos Tower,2,Weaver-Densford Hall,2,moos2-weaver2
+Weaver-Densford Hall,2,Moos Tower,2,weaver2-moos2
+Moos Tower,2,Washington Avenue Ramp,B,moos2-washRampB
+Washington Avenue Ramp,B,Moos Tower,2,washRampB-moos2
+Philips-Wangensteen Building,2,Diehl Hall,2,pwb2-diehl2
+Diehl Hall,2,Philips-Wangensteen Building,2,diehl2-pwb2
+Philips-Wangensteen Building,2,Health Sciences Education Center,2,pwb2-hsec2
+Health Sciences Education Center,2,Philips-Wangensteen Building,2,hsec2-pwb2
+Fairview Medical Center,1,Philips-Wangensteen Building,2,fairview1-pwb2
+Philips-Wangensteen Building,2,Fairview Medical Center,1,pwb2-fairview1
+Fairview Medical Center,1,Health Sciences Education Center,1,fairview1-hsec1
+Health Sciences Education Center,1,Fairview Medical Center,1,hsec1-fairview1
+Fairview Medical Center,1,Fairview Medical Center,2,fairview1-fairview2
+Fairview Medical Center,2,Fairview Medical Center,1,fairview2-fairview1
+Health Sciences Education Center,1,Hospital Patient & Visitor Ramp,T,hsec1-hospitalRamp
+Hospital Patient & Visitor Ramp,T,Health Sciences Education Center,1,hospitalRamp-hsec1
+Weaver-Densford Hall,2,Washington Avenue Ramp,B,weaver2-washRampB
+Washington Avenue Ramp,B,Weaver-Densford Hall,2,washRampB-weaver2
+Washington Avenue Ramp,B,Washington Avenue Ramp,3,washRampB-washRamp3
+Washington Avenue Ramp,3,Washington Avenue Ramp,B,washRamp3-washRampB
+Washington Avenue Ramp,3,"Parking, Transportation, & Safety Building",2,washRamp3-pts2
+"Parking, Transportation, & Safety Building",2,Washington Avenue Ramp,3,pts2-washRamp3
+Washington Avenue Ramp,3,Graduate Hotel,2,washRamp3-graddy2
+Graduate Hotel,2,Washington Avenue Ramp,3,graddy2-washRamp3
+Graduate Hotel,2,Graduate Hotel,LL,graddy2-graddyLL
+Graduate Hotel,LL,Graduate Hotel,2,graddyLL-graddy2
+Graduate Hotel,LL,McNamara Alumni Center,B,graddyLL-mcnamaraB
+McNamara Alumni Center,B,Graduate Hotel,LL,mcnamaraB-graddyLL
+McNamara Alumni Center,B,University Avenue Ramp,B,mcnamaraB-universityRampB
+University Avenue Ramp,B,McNamara Alumni Center,B,universityRampB-mcnamaraB

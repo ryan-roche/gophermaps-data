@@ -1,0 +1,54 @@
+Bailey Hall,2,Bailey Dining Hall,2,bailey2-baileyDining2
+Bailey Dining Hall,2,Bailey Hall,2,baileyDining2-bailey2
+Bailey Dining Hall,2,St. Paul Student Center,2,baileyDining2-stPaStuCe2
+St. Paul Student Center,2,Bailey Dining Hall,2,stPaStuCe2-baileyDining2
+St. Paul Student Center,2,St. Paul Student Center,B,stPaStuCe2-stPaStuCeB
+St. Paul Student Center,B,St. Paul Student Center,2,stPaStuCeB-stPaStuCe2
+St. Paul Student Center,B,Coffey Hall,B,stPaStuCeB-coffeyB
+Coffey Hall,B,St. Paul Student Center,B,coffeyB-stPaStuCeB
+St. Paul Student Center,B,Ruttan Hall,G,stPaStuCeB-ruttanG
+Ruttan Hall,G,St. Paul Student Center,B,ruttanG-stPaStuCeB
+Ruttan Hall,G,Magrath Library,G,ruttanG-magrathG
+Magrath Library,G,Ruttan Hall,G,magrathG-ruttanG
+Magrath Library,G,Learning & Environmental Sciences,3,magrathG-envSci3
+Learning & Environmental Sciences,3,Magrath Library,G,envSci3-magrathG
+Animal Science & Veterenary Medicine,1,Veterinary Medical Center North,3,asvm1-vetmedctrn3
+Veterinary Medical Center North,3,Animal Science & Veterenary Medicine,1,vetmedctrn3-asvm1
+Veterinary Medical Center North,3,Veterinary Medical Center South,3,vetmedctrn3-vetmedctrs3
+Veterinary Medical Center South,3,Veterinary Medical Center North,3,vetmedctrs3-vetmedctrn3
+Veterinary Medical Center South,3,Veterinary Diagnostic Lab,3,vetmedctrs3-vetDiagnostic3
+Veterinary Diagnostic Lab,3,Veterinary Medical Center South,3,vetDiagnostic3-vetmedctrs3
+Veterinary Medical Center South,3,Veterinary Science,3,vetmedctrs3-vetScience3
+Veterinary Science,3,Veterinary Medical Center South,3,vetScience3-vetmedctrs3
+Green Hall,G,Skok Hall,G,greenG-skokG
+Skok Hall,G,Green Hall,G,skokG-greenG
+Skok Hall,G,Skok Hall,B,skokG-skokB
+Skok Hall,B,Skok Hall,G,skokB-skokG
+Skok Hall,B,Kaufert Lab,1,skokB-kaufert1
+Kaufert Lab,1,Skok Hall,B,kaufert1-skokB
+Kaufert Lab,1,Hodson Hall,2,kaufert1-hodson2
+Hodson Hall,2,Kaufert Lab,1,hodson2-kaufert1
+Hodson Hall,2,Alderman Hall,2,hodson2-alderman2
+Alderman Hall,2,Hodson Hall,2,alderman2-hodson2
+Soil Science,2,Borlaug Hall,2,soil2-borlaug2
+Borlaug Hall,2,Soil Science,2,borlaug2-soil2
+Borlaug Hall,2,Stakman Hall,2,borlaug2-stakman2
+Stakman Hall,2,Borlaug Hall,2,stakman2-borlaug2
+Borlaug Hall,2,Hayes Hall,2,borlaug2-hayes2
+Hayes Hall,2,Borlaug Hall,2,hayes2-borlaug2
+Borlaug Hall,2,Ecology Building,1,borlaug2-ecology1
+Ecology Building,1,Borlaug Hall,2,ecology1-borlaug2
+Stakman Hall,2,Christensen Lab,2,stakman2-christ2
+Christensen Lab,2,Stakman Hall,2,christ2-stakman2
+Christensen Lab,2,Hayes Hall,2,christ2-hayes2
+Hayes Hall,2,Christensen Lab,2,hayes2-christ2
+Ecology Building,1,McNeal Hall,L,ecology1-mcnealL
+McNeal Hall,L,Ecology Building,1,mcnealL-ecology1
+Ecology Building,1,Ecology Building,B,ecology1-ecologyB
+Ecology Building,B,Ecology Building,1,ecologyB-ecology1
+Ecology Building,B,Gortner Lab,B,ecologyB-gortnerB
+Gortner Lab,B,Ecology Building,B,gortnerB-ecologyB
+Gortner Lab,B,Snyder Hall,B,gortnerB-snyderB
+Snyder Hall,B,Gortner Lab,B,snyderB-gortnerB
+Snyder Hall,B,Biological Sciences Center,1,snyderB-biologSci1
+Biological Sciences Center,1,Snyder Hall,B,biologSci1-snyderB

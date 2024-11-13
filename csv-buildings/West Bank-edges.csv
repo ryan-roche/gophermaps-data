@@ -1,0 +1,34 @@
+Mondale Hall,SP,Willey Hall,G,mondSP-willG
+Willey Hall,G,Mondale Hall,SP,willG-mondSP
+Willey Hall,G,Andersen Library,G,willG-ander1
+Andersen Library,G,Willey Hall,G,ander1-willG
+Willey Hall,G,Willey Hall,P,willG-willP
+Willey Hall,P,Willey Hall,G,willP-willG
+Willey Hall,P,West Bank Skyway,1,willP-skyway1
+West Bank Skyway,1,Willey Hall,P,skyway1-willP
+West Bank Skyway,1,Blegen Hall,1,skyway1-bleg1
+Blegen Hall,1,West Bank Skyway,1,bleg1-skyway1
+Blegen Hall,1,Blegen Hall,G,bleg1-blegG
+Blegen Hall,G,Blegen Hall,1,blegG-bleg1
+Blegen Hall,G,Social Sciences,G,blegG-socG
+Social Sciences,G,Blegen Hall,G,socG-blegG
+Blegen Hall,G,Heller Hall,G,blegG-hellerG
+Heller Hall,G,Blegen Hall,G,hellerG-blegG
+Social Sciences,G,Wilson Library,B,socG-wilsonB
+Wilson Library,B,Social Sciences,G,wilsonB-socG
+Social Sciences,G,Anderson Hall,1,socG-andor1
+Anderson Hall,1,Social Sciences,G,andor1-socG
+Anderson Hall,1,Ferguson Hall,B,andor1-fergB
+Ferguson Hall,B,Anderson Hall,1,fergB-andor1
+Ferguson Hall,B,Rarig Center,B,fergB-rarigB
+Rarig Center,B,Ferguson Hall,B,rarigB-fergB
+Heller Hall,G,Humphrey School of Public Affairs,G,hellerG-humpG
+Humphrey School of Public Affairs,G,Heller Hall,G,humpG-hellerG
+Humphrey School of Public Affairs,G,Carlson School of Management,LL,humpG-carlsonLL
+Carlson School of Management,LL,Humphrey School of Public Affairs,G,carlsonLL-humpG
+Carlson School of Management,LL,Carlson School of Management,2,carlsonLL-carlson2
+Carlson School of Management,2,Carlson School of Management,LL,carlson2-carlsonLL
+Carlson School of Management,2,Hanson Hall,2,carlson2-hanson2
+Hanson Hall,2,Carlson School of Management,2,hanson2-carlson2
+Carlson School of Management,2,19th Ave Ramp,3,carlson2-19ave3
+19th Ave Ramp,3,Carlson School of Management,2,19ave3-carlson2
