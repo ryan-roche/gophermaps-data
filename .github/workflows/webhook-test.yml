@@ -14,7 +14,7 @@ jobs:
           username: GopherMaps Data
           avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
           embed-title: "TODO say run succeeded/failed"
-          embed-url: "TODO get url to current workflow run"
+          embed-url: "https://github.com/ryan-roche/gophermaps-data/blob/main/.github/workflows/webhook-test.yml"
           embed-description: "TODO list success/error info"
           embed-author-name: "Generate manifest.json"
           embed-author-icon-url: "https://github.com/github.png"
