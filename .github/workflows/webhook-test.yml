@@ -17,10 +17,7 @@ jobs:
           embed-url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
           embed-description: "Test embed for status report"
           embed-author-name: "Generate `manifest.json`"
-          embed-author-icon-url: "https://github.com/github.com"
+          embed-author-icon-url: "https://github.com/github.png"
           embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
           embed-thumbnail-url: "https://github.com/actions-user.png"
-          embed-image-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
-          embed-footer-icon-url: "https://cdn.discordapp.com/avatars/742807869023322232/dd41912939ffccbea0276f70688fa0ec.webp?size=256"
-          embed-footer-text: "Test Footer"
           embed-color: 15430476
