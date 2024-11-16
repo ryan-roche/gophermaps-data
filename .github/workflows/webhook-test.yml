@@ -11,4 +11,13 @@ jobs:
         uses: tsickert/discord-webhook@v6.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          content: "Test message from GitHub Actions!"
+          embed-title: Title for embed
+          embed-url: https://github.com/ryan-roche/gophermaps-data/actions/workflows/webhook-test.yml
+          embed-description: Description for embed
+          embed-footer-text: Text content for embed footer
+          embed-footer-icon-url:	Icon URL for embed footer
+          embed-image-url:	https://github.com/ryan-roche/gophermaps-data/blob/0f065c872f8b87ce47438b40f26fcdefbb6a5c22/instructions/kh4-me2/img1.png?raw=true
+          embed-thumbnail-url: https://cdn.discordapp.com/attachments/1303210125875478589/1306017328789458984/a6a5317b-a286-4f9b-8a39-4258fb832905-evan_voogd_1.jpg?ex=6739c02b&is=67386eab&hm=a5240a16101542776f2266983caa77cc7b1ba29668c7f1db2221815c8825c754&
+          embed-author-name:	Embed Author Name
+          embed-author-url: Embed Author URL
+          embed-author-icon-url: https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2048px-Octicons-mark-github.svg.png
