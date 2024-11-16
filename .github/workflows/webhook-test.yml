@@ -21,4 +21,3 @@ jobs:
           embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
           embed-thumbnail-url: "https://github.com/actions-user.png"
           embed-color: 15430476
-          # TODO add conditional color
