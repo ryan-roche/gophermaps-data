@@ -39,7 +39,7 @@ jobs:
                 },
                 {
                   "name": "📣 Server Messages",
-                  "value": "TODO",
+                  "value": "- 📄 Added 5\n - 🗃️ Total: 37",
                   "inline": true
                 }
               ],
