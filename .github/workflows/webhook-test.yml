@@ -37,12 +37,10 @@ jobs:
                 {
                   "name": "📜 Instructions",
                   "value": "- 📄 Added ??\n - 🗃️ Total: ??",
-                  "inline": true
                 },
                 {
                   "name": "📣 Server Messages",
                   "value": "- 📥 ?? added\n - ⏭️ ?? skipped",
-                  "inline": true
                 }
               ],
               "thumbnail": {
