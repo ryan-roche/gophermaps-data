@@ -18,20 +18,18 @@ jobs:
     - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
       with:
         key: "${{secrets.DISCORD_WEBHOOK_URL}}"
-        username: "Webhook"
-        avatar_url: "https://i.imgur.com/4M34hi2.png"
-        content: "Text message. Up to 2000 characters."
+        username: "GopherMaps Data"
+        avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/272de93264920dc4048b36cca50e581c199e0bc1/webhook-icons/gw-data.png?raw=true"
         embeds: |
           [
             {
               "author": {
-                "name": "Birdie♫",
-                "url": "https://www.reddit.com/r/cats/",
-                "icon_url": "https://i.imgur.com/R66g1Pe.jpg"
+                "name": "Generate manifest.json",
+                "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
+                "icon_url": "https://github.com/github.png"
               },
-              "title": "Title",
-              "url": "https://google.com/",
-              "description": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
+              "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
+              "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
               "color": 15258703,
               "fields": [
                 {
