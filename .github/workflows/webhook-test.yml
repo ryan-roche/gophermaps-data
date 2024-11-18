@@ -21,7 +21,7 @@ jobs:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: GopherMaps Data
           avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
-          embed-title: ${{ needs.first-job.result == 'success' && 'Job Succeeded' || 'Job Failed' }}
+          embed-title: ${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}
           embed-url: "https://github.com/ryan-roche/gophermaps-data/blob/main/.github/workflows/webhook-test.yml"
           embed-description: "line break test\n did it work?"
           embed-author-name: "Generate manifest.json"
