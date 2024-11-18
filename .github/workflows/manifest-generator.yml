@@ -19,6 +19,7 @@ permissions:
   
 jobs:
   generate-manifest:
+    name: Generate Manifest
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -44,4 +45,25 @@ jobs:
         git add -f manifest.json
         git commit -m "Update manifest.json" || echo "No changes to commit"
         git push
+
+  send-discord-message:
+    needs: generate-manifest
+    name: Report Result
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post Discord Webhook
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          username: GopherMaps Data
+          avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
+          embed-title: ${{ needs.generate-manifest.result == 'success' && 'Updated Manifest' || 'Failed to update Manifest' }}
+          embed-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          embed-description: ${{ needs.generate-manifest.result == 'success' && 'Manifest generated successfully' || 'TODO add error logs' }}
+          embed-author-name: "Generate manifest.json"
+          embed-author-icon-url: "https://github.com/github.png"
+          embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
+          embed-thumbnail-url: "https://github.com/actions-user.png"
+          embed-color: ${{ needs.generate-manifest.result == 'success' && 4029719 || 12845056 }}
 
