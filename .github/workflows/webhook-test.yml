@@ -4,16 +4,24 @@ on:
   workflow_dispatch:  # This allows manual triggering from the GitHub UI
 
 jobs:
-  send-discord-message:
+  simulate-task:
     runs-on: ubuntu-latest
     steps:
-      - name: Discord Webhook Action
+      - name: Simulate Return
+        run: exit 1
+
+  send-discord-message:
+    needs: simulate-task
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Post Discord Webhook
         uses: tsickert/discord-webhook@v6.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           username: GopherMaps Data
           avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
-          embed-title: "TODO say run succeeded/failed"
+          embed-title: ${{ needs.first-job.result == 'success' && 'Job Succeeded' || 'Job Failed' }}
           embed-url: "https://github.com/ryan-roche/gophermaps-data/blob/main/.github/workflows/webhook-test.yml"
           embed-description: "line break test\n did it work?"
           embed-author-name: "Generate manifest.json"
