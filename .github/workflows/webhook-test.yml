@@ -47,4 +47,6 @@ jobs:
                 "url": "https://github.com/actions-user.png"
               }
             }
+            # TODO add extra embed for if any instructions were ill-formatted
+            # TODO add extra embed for if any serverMessages were ill-formatted
           ]
