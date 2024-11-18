@@ -26,6 +26,6 @@ jobs:
           embed-description: "line break test\n did it work?"
           embed-author-name: "Generate manifest.json"
           embed-author-icon-url: "https://github.com/github.png"
-          embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
+          embed-author-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           embed-thumbnail-url: "https://github.com/actions-user.png"
           embed-color: ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }}
