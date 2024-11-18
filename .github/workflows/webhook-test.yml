@@ -30,25 +30,17 @@ jobs:
               },
               "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
               "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-              "color": 15258703,
+              "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
               "fields": [
                 {
-                  "name": "Text",
-                  "value": "More text",
+                  "name": "📜 Instructions",
+                  "value": "TODO",
                   "inline": true
                 },
                 {
-                  "name": "Even more text",
-                  "value": "Yup",
+                  "name": "📣 Server Messages",
+                  "value": "TODO",
                   "inline": true
-                },
-                {
-                  "name": "Use `\"inline\": true` parameter, if you want to display fields in the same line.",
-                  "value": "okay..."
-                },
-                {
-                  "name": "Thanks!",
-                  "value": "You're welcome :wink:"
                 }
               ],
               "thumbnail": {
