@@ -22,10 +22,10 @@ jobs:
           username: GopherMaps Data
           avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
           embed-title: ${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}
-          embed-url: "https://github.com/ryan-roche/gophermaps-data/blob/main/.github/workflows/webhook-test.yml"
-          embed-description: "line break test\n did it work?"
+          embed-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          embed-description: ${{ needs.simulate-task.result == 'success' && 'Manifest generated successfully' || 'TODO add error logs' }}
           embed-author-name: "Generate manifest.json"
           embed-author-icon-url: "https://github.com/github.png"
-          embed-author-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
           embed-thumbnail-url: "https://github.com/actions-user.png"
           embed-color: ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }}
