@@ -38,7 +38,8 @@ jobs:
             }
           ]
           EOF
-          echo "::set-output name=json::$(jq -c . < embed.json)"  # Compact and escape JSON output
+          # Compact and escape the JSON to a single line
+          echo "::set-output name=json::$(jq -c . < embed.json)"
     
   simulate-task:
     runs-on: ubuntu-latest
@@ -52,12 +53,9 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Parsed JSON:"
-          echo "${{ needs.generate-json.outputs.discord-embed-json }}"
       - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
         with:
           key: "${{ secrets.DISCORD_WEBHOOK_URL }}"
           username: "GopherMaps Data"
           avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
-          embeds: ${{ fromJson(needs.generate-json.outputs.discord-embed-json) }}
+          embeds: "${{ needs.generate-json.outputs.discord-embed-json }}"
