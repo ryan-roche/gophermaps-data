@@ -14,11 +14,12 @@ jobs:
    steps:
      - name: Simulate Return
        id: generate-manifest
-       run: |
-         echo "added_instructions=1" >> "$GITHUB_OUTPUT"
-         echo "total_instructions=5" >> "$GITHUB_OUTPUT"
-         echo "included_messages=3" >> "$GITHUB_OUTPUT"
-         echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
+       # run: |
+       #   echo "added_instructions=1" >> "$GITHUB_OUTPUT"
+       #   echo "total_instructions=5" >> "$GITHUB_OUTPUT"
+       #   echo "included_messages=3" >> "$GITHUB_OUTPUT"
+       #   echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
+       run: exit 1
 
  send-discord-message:
    needs: simulate-task
@@ -29,9 +30,9 @@ jobs:
        id: generate-json
        run: |
          if [[ "${{ needs.simulate-task.result }}" == "success" ]]; then
-           echo 'embed_json=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"Job Succeeded","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":4029719,"fields":[{"name":"📜  Instructions","value":"- 📄  Added ${{ needs.simulate-task.outputs.added_instructions }}\n - 🗃️  Total: ${{ needs.simulate-task.outputs.total_instructions }}"},{"name":"📣  Server Messages","value":"- 📥  ${{ needs.simulate-task.outputs.included_messages }} included\n - ⏭️  ${{ needs.simulate-task.outputs.skipped_messages }} skipped"}],"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
+           echo 'embed_json=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"Updated Manifest","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":4029719,"fields":[{"name":"📜  Instructions","value":"- 📄  Added ${{ needs.simulate-task.outputs.added_instructions }}\n - 🗃️  Total: ${{ needs.simulate-task.outputs.total_instructions }}"},{"name":"📣  Server Messages","value":"- 📥  ${{ needs.simulate-task.outputs.included_messages }} included\n - ⏭️  ${{ needs.simulate-task.outputs.skipped_messages }} skipped"}],"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
          else
-           echo 'embed_json=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"Job Failed","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":12845056,"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
+           echo 'embed_json=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"Failed to generate Manifest","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":12845056,"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
          fi
 
      - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
