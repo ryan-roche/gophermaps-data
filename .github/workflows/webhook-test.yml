@@ -1,7 +1,7 @@
 name: Discord Webhook Test
 
 on:
-  workflow_dispatch:  # This allows manual triggering from the GitHub UI
+  workflow_dispatch:  # Allows manual triggering from the GitHub UI
 
 jobs:
   generate-json:
@@ -38,8 +38,7 @@ jobs:
             }
           ]
           EOF
-          # Safely output the JSON with proper escaping
-          echo "::set-output name=json::$(cat embed.json | jq -c)"
+          echo "::set-output name=json::$(jq -c . < embed.json)"  # Compact and escape JSON output
     
   simulate-task:
     runs-on: ubuntu-latest
@@ -53,6 +52,9 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo "Parsed JSON:"
+          echo "${{ needs.generate-json.outputs.discord-embed-json }}"
       - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
         with:
           key: "${{ secrets.DISCORD_WEBHOOK_URL }}"
