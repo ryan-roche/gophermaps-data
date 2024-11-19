@@ -13,7 +13,8 @@ jobs:
      included_messages: ${{ steps.generate-manifest.outputs.included_messages }}
      skipped_messages: ${{ steps.generate-manifest.outputs.skipped_messages }}
      failure_reason: ${{ steps.generate-manifest.outputs.failure_reason }}
-     notices: ${{ steps.generate-manifest.outputs.notices || '✅ No issues encountered\n' }}
+     notices: ${{ steps.generate-manifest.outputs.notices || '✅ No issues encountered
+     ' }}
    steps:
      - name: Simulate Return
        id: generate-manifest
