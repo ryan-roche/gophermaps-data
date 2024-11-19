@@ -29,16 +29,16 @@ jobs:
 
 
   generate-embeds:
-  name: Generate Webhook Embeds
-  needs: simulate-task
-  if: always()
-  runs-on: ubuntu-latest
-  outputs:
-    embeds: ${{ steps.build-embeds.outputs.embeds }}
-  steps:
-    - name: Build Embeds JSON
-      id: build-embeds
-      run: echo 'embeds=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"${{ needs.simulate-task.result == '"'success'"' && '"'Job Succeeded'"' || '"'Job Failed'"' }}","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":${{ needs.simulate-task.result == '"'success'"' && 4029719 || 12845056 }},"fields":[{"name":"📜 Instructions","value":"- 📄 Added ??\n - 🗃️ Total: ??"},{"name":"📣 Server Messages","value":"- 📥 ?? added\n - ⏭️ ?? skipped"}],"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
+    name: Generate Webhook Embeds
+    needs: simulate-task
+    if: always()
+    runs-on: ubuntu-latest
+    outputs:
+      embeds: ${{ steps.build-embeds.outputs.embeds }}
+    steps:
+      - name: Build Embeds JSON
+        id: build-embeds
+        run: echo 'embeds=[{"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},"title":"${{ needs.simulate-task.result == '"'success'"' && '"'Job Succeeded'"' || '"'Job Failed'"' }}","url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}","color":${{ needs.simulate-task.result == '"'success'"' && 4029719 || 12845056 }},"fields":[{"name":"📜 Instructions","value":"- 📄 Added ??\n - 🗃️ Total: ??"},{"name":"📣 Server Messages","value":"- 📥 ?? added\n - ⏭️ ?? skipped"}],"thumbnail":{"url":"https://github.com/actions-user.png"}}]' >> $GITHUB_OUTPUT
 
 
   send-discord-message:
