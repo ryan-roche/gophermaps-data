@@ -1,62 +1,69 @@
-name: Discord Webhook Test
+name: Generate manifest.json
 
 on:
-  workflow_dispatch:  # This allows manual triggering from the GitHub UI
+  push:
+    branches:
+      - main
+    paths:
+      - 'instructions/**'
+      - 'serverMessages/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'instructions/**'
+  workflow_dispatch:
 
+permissions:
+  contents: write
+  
 jobs:
-  simulate-task:
+  generate-manifest:
+    name: Generate Manifest
     runs-on: ubuntu-latest
-    outputs:
-      added_instructions: ${{ steps.generate-manifest.outputs.added_instructions }}
-      total_instructions: ${{ steps.generate-manifest.outputs.total_instructions }}
-      included_messages: ${{ steps.generate-manifest.outputs.included_messages }}
-      skipped_messages: ${{ steps.generate-manifest.outputs.skipped_messages }}
     steps:
-      - name: Simulate Return
-        id: generate-manifest
-        run: |
-          echo "added_instructions=1" >> "$GITHUB_OUTPUT"
-          echo "total_instructions=5" >> "$GITHUB_OUTPUT"
-          echo "included_messages=3" >> "$GITHUB_OUTPUT"
-          echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
+    - name: Checkout repository
+      id: checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      id: setupPython
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    - name: Generate manifest.json
+      id: generateManifest
+      run: python scripts/generate_manifest.py
+    - name: Commit changes
+      id: commitChanges
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+        git add -f manifest.json
+        git commit -m "Update manifest.json" || echo "No changes to commit"
+        git push
 
   send-discord-message:
-    name: Post Discord Webhook
-    needs: simulate-task
+    needs: generate-manifest
+    name: Report Result
     if: always()
     runs-on: ubuntu-latest
     steps:
-    - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
-      with:
-        key: "${{secrets.DISCORD_WEBHOOK_URL}}"
-        username: "GopherMaps Data"
-        avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
-        embeds: |
-          [
-            {
-              "author": {
-                "name": "Generate manifest.json",
-                "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
-                "icon_url": "https://github.com/github.png"
-              },
-              "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
-              "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-              "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
-              "fields": [
-              # TODO programatically populate fields depending on result of generation job
-                {
-                  "name": "📜  Instructions",
-                  "value": "- 📄  Added ${{ needs.simulate-task.outputs.added_instructions }}\n - 🗃️  Total: ${{ needs.simulate-task.outputs.total_instructions }}",
-                },
-                {
-                  "name": "📣  Server Messages",
-                  "value": "- 📥  ${{ needs.simulate-task.outputs.included_messages }} included\n - ⏭️  ${{ needs.simulate-task.outputs.skipped_messages }} skipped",
-                }
-              ],
-              "thumbnail": {
-                "url": "https://github.com/actions-user.png"
-              }
-            }
-            # TODO add extra embed for if any instructions were ill-formatted
-            # TODO add extra embed for if any serverMessages were ill-formatted
-          ]
+      - name: Post Discord Webhook
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          username: GopherMaps Data
+          avatar-url: https://github.com/ryan-roche/gophermaps-data/blob/41aff9bce9af2257665f8393c372d84f7fc5826a/webhook-icons/gw-data.png?raw=true
+          embed-title: ${{ needs.generate-manifest.result == 'success' && 'Updated Manifest' || 'Failed to update Manifest' }}
+          embed-url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          embed-description: ${{ needs.generate-manifest.result == 'success' && 'Manifest generated successfully' || 'TODO add error logs' }}
+          embed-author-name: "Generate manifest.json"
+          embed-author-icon-url: "https://github.com/github.png"
+          embed-author-url: "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml"
+          embed-thumbnail-url: "https://github.com/actions-user.png"
+          embed-color: ${{ needs.generate-manifest.result == 'success' && 4029719 || 12845056 }}
+
