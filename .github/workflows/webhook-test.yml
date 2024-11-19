@@ -41,7 +41,7 @@ jobs:
               "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
               "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
               "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
-              "fields": ${{ needs.simulate-task.result == 'success' && format('[{"name":"📜  Instructions","value":"- 📄  Added {0}\n - 🗃️  Total: {1}"},{"name":"📣  Server Messages","value":"- 📥  {2} included\n - ⏭️  {3} skipped"}]', needs.simulate-task.outputs.added_instructions, needs.simulate-task.outputs.total_instructions, needs.simulate-task.outputs.included_messages, needs.simulate-task.outputs.skipped_messages) | toJSON || '[]' }},
+              "fields": ${{ needs.simulate-task.result == 'success' && fromJSON(format('[{"name":"📜  Instructions","value":"- 📄  Added {0}\n - 🗃️  Total: {1}"},{"name":"📣  Server Messages","value":"- 📥  {2} included\n - ⏭️  {3} skipped"}]', needs.simulate-task.outputs.added_instructions, needs.simulate-task.outputs.total_instructions, needs.simulate-task.outputs.included_messages, needs.simulate-task.outputs.skipped_messages)) || fromJSON('[]') }},
               "thumbnail": {
                 "url": "https://github.com/actions-user.png"
               }
