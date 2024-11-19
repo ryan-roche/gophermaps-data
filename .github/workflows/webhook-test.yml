@@ -10,9 +10,26 @@ jobs:
       - name: Simulate Return
         run: exit 0
 
+  generate-embeds:
+    name: Generate Webhook Embeds
+    needs: simulate-task
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check previous job result
+      shell: bash
+      run: |
+        if [ "${{ needs.simulate-task.result }}" == "success" ]; then
+            echo "Simulation task succeeded, proceeding with next steps"
+            # Add your success logic here
+        else
+            echo "Simulation task did not succeed, handling accordingly"
+            # Add your failure handling logic here
+        fi
+
   send-discord-message:
     name: Post Discord Webhook
-    needs: simulate-task
+    needs: [simulate-task, generate-embeds]
     if: always()
     runs-on: ubuntu-latest
     steps:
