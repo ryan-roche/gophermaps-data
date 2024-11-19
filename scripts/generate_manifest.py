@@ -12,6 +12,12 @@ instructions_directory = os.path.join(script_dir, '../instructions')
 server_messages_directory = os.path.join(script_dir, '../serverMessages')
 
 
+def write_github_output(name: str, value: str) -> None:
+   """Write a name-value pair to $GITHUB_OUTPUT"""
+   with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+       f.write(f"{name}={value}\n")
+
+
 def get_last_commit_date_for_files(dirpath):
     latest_commit_date = None
 
@@ -104,22 +110,25 @@ def get_manifest_data():
     if os.path.exists(instructions_directory):
         manifest['instructions'] = get_instructions_entry(instructions_directory)
     else:
-        print(f"Error: {instructions_directory} does not exist.")
+        raise FileNotFoundError(f"{instructions_directory} does not exist.")
 
     # Process the serverMessages directory
     if os.path.exists(server_messages_directory):
         manifest['serverMessages'] = get_server_messages_entry(server_messages_directory)
     else:
-        print(f"Error: {server_messages_directory} does not exist.")
+        raise FileNotFoundError(f"{server_messages_directory} does not exist.")
 
     return manifest
 
 
 if __name__ == "__main__":
-    # Generate the manifest data
-    manifest_data = get_manifest_data()
+    try:
+        # Generate the manifest data
+        manifest_data = get_manifest_data()
 
-    # Write the output to the root directory
-    manifest_path = os.path.join(script_dir, '../manifest.json')
-    with open(manifest_path, 'w') as f:
-        json.dump(manifest_data, f, indent=2)
+        # Write the output to the root directory
+        manifest_path = os.path.join(script_dir, '../manifest.json')
+        with open(manifest_path, 'w') as f:
+            json.dump(manifest_data, f, indent=2)
+    except FileNotFoundError as e:
+        write_github_output("failure_reason", str(e))
