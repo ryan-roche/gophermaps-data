@@ -38,7 +38,7 @@ jobs:
             }
           ]
           EOF
-          echo "::set-output name=json::$(jq -c . < embed.json)"
+          echo "::set-output name=json::$(cat embed.json | jq -c .)"
     
   simulate-task:
     runs-on: ubuntu-latest
@@ -52,6 +52,8 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo "Embed JSON: ${{ needs.generate-json.outputs.discord-embed-json }}"
       - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
         with:
           key: "${{ secrets.DISCORD_WEBHOOK_URL }}"
