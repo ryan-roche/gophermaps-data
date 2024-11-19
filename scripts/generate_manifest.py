@@ -12,6 +12,12 @@ instructions_directory = os.path.join(script_dir, '../instructions')
 server_messages_directory = os.path.join(script_dir, '../serverMessages')
 
 
+def write_github_output(name: str, value: str) -> None:
+   """Write a name-value pair to $GITHUB_OUTPUT"""
+   with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+       f.write(f"{name}={value}\n")
+
+
 def get_last_commit_date_for_files(dirpath):
     latest_commit_date = None
 
@@ -37,7 +43,23 @@ def get_last_commit_date_for_files(dirpath):
 
 def get_instructions_entry(instructions_dir):
     instructions = {}
+    num_new_instructions = 0
+    num_updated_instructions = 0
+    num_unchanged_instructions = 0
 
+    # Attempt to load the previous manifest to disambiguate new, updated, and unmodified instructions
+    prev_manifest_path = os.path.join(script_dir, '../manifest.json')
+    if os.path.isfile(prev_manifest_path):
+        try:
+            with open(prev_manifest_path, 'r') as file:
+                old_manifest = json.load(file)
+                old_instructions = old_manifest['instructions']
+        except:
+            print("Failed to read previous manifest. All instructions will be treated as new")
+            write_github_output('notices', '⚠️  Unable to find previous manifest- all instructions treated as new.')
+            old_instructions = {}
+
+    # Iterate over all subdirectories in the instructions directory
     for dirpath, dirnames, filenames in os.walk(instructions_dir):
         # Skip the root directory itself
         if dirpath == instructions_dir:
@@ -55,6 +77,22 @@ def get_instructions_entry(instructions_dir):
             'files': filenames
         }
 
+        # Determine whether this is a new or updated instruction set
+        if dir_name in old_instructions.keys():
+            if last_modified != old_instructions[dir_name]['last_modified']:
+                print(f'🔄 Updated instructions for {dir_name}')
+                num_updated_instructions += 1
+            else:
+                print(f'➡️ No change to instructions for {dir_name}')
+                num_unchanged_instructions += 1
+        else:
+            print(f'💠 Added new instructions for {dir_name}')
+            num_new_instructions += 1
+                    
+    write_github_output('added_instructions', num_new_instructions)
+    write_github_output('updated_instructions', num_updated_instructions)
+    write_github_output('total_instructions', num_new_instructions + num_updated_instructions + num_unchanged_instructions)
+
     return instructions
 
 
@@ -68,6 +106,9 @@ def generate_content_hash(content):
 def get_server_messages_entry(server_messages_dir):
     server_messages = []
     current_time = datetime.now(timezone.utc)
+
+    num_included_messages = 0
+    num_skipped_messages = 0
 
     for filename in os.listdir(server_messages_dir):
         file_path = os.path.join(server_messages_dir, filename)
@@ -87,12 +128,17 @@ def get_server_messages_entry(server_messages_dir):
                         content['id'] = message_id  # Add the ID to the message
                         server_messages.append(content)
                         print(f"Included message from {file_path} with ID {message_id}")
+                        num_included_messages += 1
                     else:
                         print(f"Excluded message from {file_path} due to past endDate {content.get('endDate')}")
+                        num_skipped_messages += 1
             except json.JSONDecodeError as e:
                 print(f"Error decoding JSON from {file_path}: {e}")
             except Exception as e:
                 print(f"Error reading {file_path}: {e}")
+
+    write_github_output("included_messages", num_included_messages)
+    write_github_output("skipped_messages", num_skipped_messages)
 
     return server_messages
 
@@ -104,22 +150,25 @@ def get_manifest_data():
     if os.path.exists(instructions_directory):
         manifest['instructions'] = get_instructions_entry(instructions_directory)
     else:
-        print(f"Error: {instructions_directory} does not exist.")
+        raise FileNotFoundError(f"{instructions_directory} does not exist.")
 
     # Process the serverMessages directory
     if os.path.exists(server_messages_directory):
         manifest['serverMessages'] = get_server_messages_entry(server_messages_directory)
     else:
-        print(f"Error: {server_messages_directory} does not exist.")
+        raise FileNotFoundError(f"{server_messages_directory} does not exist.")
 
     return manifest
 
 
 if __name__ == "__main__":
-    # Generate the manifest data
-    manifest_data = get_manifest_data()
+    try:
+        # Generate the manifest data
+        manifest_data = get_manifest_data()
 
-    # Write the output to the root directory
-    manifest_path = os.path.join(script_dir, '../manifest.json')
-    with open(manifest_path, 'w') as f:
-        json.dump(manifest_data, f, indent=2)
+        # Write the output to the root directory
+        manifest_path = os.path.join(script_dir, '../manifest.json')
+        with open(manifest_path, 'w') as f:
+            json.dump(manifest_data, f, indent=2)
+    except FileNotFoundError as e:
+        write_github_output("failure_reason", str(e))
