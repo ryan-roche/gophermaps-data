@@ -57,4 +57,4 @@ jobs:
           key: "${{ secrets.DISCORD_WEBHOOK_URL }}"
           username: "GopherMaps Data"
           avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
-          embeds: ${{ needs.generate-json.outputs.discord-embed-json }}
+          embeds: ${{ fromJson(needs.generate-json.outputs.discord-embed-json) }}
