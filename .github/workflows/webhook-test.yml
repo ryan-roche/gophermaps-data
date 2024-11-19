@@ -25,11 +25,11 @@ jobs:
               "fields": [
                 {
                   "name": "📜 Instructions",
-                  "value": "- 📄 Added 5\n - 🗃️ Total: 10"
+                  "value": "- 📄  Added 5\n - 🗃️  Total: 10"
                 },
                 {
                   "name": "📣 Server Messages",
-                  "value": "- 📥 3 added\n - ⏭️ 2 skipped"
+                  "value": "- 📥  3 added\n - ⏭️  2 skipped"
                 }
               ],
               "thumbnail": {
