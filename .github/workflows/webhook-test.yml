@@ -11,15 +11,18 @@ jobs:
      total_instructions: ${{ steps.generate-manifest.outputs.total_instructions }}
      included_messages: ${{ steps.generate-manifest.outputs.included_messages }}
      skipped_messages: ${{ steps.generate-manifest.outputs.skipped_messages }}
+     failure_reason: ${{ steps.generate-manifest.outputs.failure_reason }}
    steps:
      - name: Simulate Return
        id: generate-manifest
+       run: |
+         echo "failure_reason=Mama a girl behind you" >> "$GITHUB_OUTPUT"
+         exit 1
        # run: |
        #   echo "added_instructions=1" >> "$GITHUB_OUTPUT"
        #   echo "total_instructions=5" >> "$GITHUB_OUTPUT"
        #   echo "included_messages=3" >> "$GITHUB_OUTPUT"
        #   echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
-       run: exit 1
 
  send-discord-message:
    needs: simulate-task
