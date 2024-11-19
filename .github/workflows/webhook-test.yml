@@ -38,8 +38,9 @@ jobs:
             }
           ]
           EOF
-          echo "::set-output name=json::$(cat embed.json)"
-
+          # Safely output the JSON with proper escaping
+          echo "::set-output name=json::$(cat embed.json | jq -c)"
+    
   simulate-task:
     runs-on: ubuntu-latest
     steps:
