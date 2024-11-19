@@ -27,7 +27,6 @@ jobs:
   #           # Add your failure handling logic here
   #       fi
 
-
   generate-embeds:
     name: Generate Webhook Embeds
     needs: simulate-task
@@ -39,60 +38,31 @@ jobs:
       - name: Build Embeds JSON
         id: build-embeds
         run: |
-          # Construct the fields array based on your data
-          FIELDS_JSON=$(cat << EOF
-          [
-            {
-              "name": "📜 Instructions",
-              "value": "- 📄 Added $INSTRUCTIONS_ADDED\n - 🗃️ Total: $INSTRUCTIONS_TOTAL"
-            },
-            {
-              "name": "📣 Server Messages",
-              "value": "- 📥 $MESSAGES_ADDED added\n - ⏭️ $MESSAGES_SKIPPED skipped"
-            }
-          ]
-          EOF
-          )
-  
-          # Build the base embed
-          BASE_EMBED=$(cat << EOF
-          {
+          EMBED='{
             "author": {
               "name": "Generate manifest.json",
               "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
               "icon_url": "https://github.com/github.png"
             },
-            "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
+            "title": "${{ needs.simulate-task.result == '"'success'"' && '"'Job Succeeded'"' || '"'Job Failed'"' }}",
             "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-            "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
-            "fields": $(echo "$FIELDS_JSON" | jq -c .),
+            "color": ${{ needs.simulate-task.result == '"'success'"' && 4029719 || 12845056 }},
+            "fields": [
+              {
+                "name": "📜 Instructions",
+                "value": "- 📄 Added ??\n - 🗃️ Total: ??"
+              },
+              {
+                "name": "📣 Server Messages",
+                "value": "- 📥 ?? added\n - ⏭️ ?? skipped"
+              }
+            ],
             "thumbnail": {
               "url": "https://github.com/actions-user.png"
             }
-          }
-          EOF
-          )
-  
-          # Initialize the embeds array
-          EMBEDS="[$BASE_EMBED"
-  
-          # Add error embed if needed
-          if [ -n "$ERROR_INSTRUCTIONS" ]; then
-            ERROR_EMBED=$(cat << EOF
-            {
-              "title": "⚠️ Ill-formatted Instructions Detected",
-              "color": 16098851,
-              "description": "$ERROR_INSTRUCTIONS"
-            }
-            EOF
-            )
-            EMBEDS="$EMBEDS,$(echo "$ERROR_EMBED" | jq -c .)"
-          fi
-  
-          # Close the array and set output
-          EMBEDS="$EMBEDS]"
-          echo "embeds=$EMBEDS" >> $GITHUB_OUTPUT
-  
+          }'
+          
+          echo "embeds=[$EMBED]" >> $GITHUB_OUTPUT
 
   send-discord-message:
     name: Post Discord Webhook
