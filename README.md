@@ -2,6 +2,8 @@
 
 This repository is being used as a surrogate CDN for the Gophermaps project.
 
+[![Generate manifest.json](https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml/badge.svg?branch=main)](https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml)
+
 ## Manifest
 
 The key file in this repository is the `manifest.json`. It consists of two main components- a list of edges with instrutions available, and server announcement messages.
