@@ -37,32 +37,20 @@ jobs:
     steps:
       - name: Build Embeds JSON
         id: build-embeds
-        run: |
-          EMBED='{
-            "author": {
-              "name": "Generate manifest.json",
-              "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
-              "icon_url": "https://github.com/github.png"
-            },
-            "title": "${{ needs.simulate-task.result == '"'success'"' && '"'Job Succeeded'"' || '"'Job Failed'"' }}",
-            "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-            "color": ${{ needs.simulate-task.result == '"'success'"' && 4029719 || 12845056 }},
-            "fields": [
-              {
-                "name": "📜 Instructions",
-                "value": "- 📄 Added ??\n - 🗃️ Total: ??"
-              },
-              {
-                "name": "📣 Server Messages",
-                "value": "- 📥 ?? added\n - ⏭️ ?? skipped"
-              }
-            ],
-            "thumbnail": {
-              "url": "https://github.com/actions-user.png"
-            }
-          }'
-          
-          echo "embeds=[$EMBED]" >> $GITHUB_OUTPUT
+        shell: bash
+        run: | 
+          echo -n "embeds="
+          echo -n "["
+          echo -n "{"
+          echo -n '"author":{"name":"Generate manifest.json","url":"https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml","icon_url":"https://github.com/github.png"},'
+          echo -n '"title":"${{ needs.simulate-task.result == '"'success'"' && '"'Job Succeeded'"' || '"'Job Failed'"' }}",'
+          echo -n '"url":"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",'
+          echo -n '"color":${{ needs.simulate-task.result == '"'success'"' && 4029719 || 12845056 }},'
+          echo -n '"fields":[{"name":"📜 Instructions","value":"- 📄 Added ??\n - 🗃️ Total: ??"},{"name":"📣 Server Messages","value":"- 📥 ?? added\n - ⏭️ ?? skipped"}],'
+          echo -n '"thumbnail":{"url":"https://github.com/actions-user.png"}'
+          echo -n "}"
+          echo -n "]"
+          echo "" >> $GITHUB_OUTPUT
 
   send-discord-message:
     name: Post Discord Webhook
