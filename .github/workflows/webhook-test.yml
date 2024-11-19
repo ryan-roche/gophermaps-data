@@ -23,10 +23,9 @@ jobs:
        run: |
          echo "added_instructions=1" >> "$GITHUB_OUTPUT"
          echo "updated_instructions=4" >> "$GITHUB_OUTPUT"
-         echo "total_instructions=5" >> "$GITHUB_OUTPUT"
+         echo "total_instructions=8" >> "$GITHUB_OUTPUT"
          echo "included_messages=3" >> "$GITHUB_OUTPUT"
          echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
-         echo "notices=mama a girl behind u 💜" >> "$GITHUB_OUTPUT"
 
  send-discord-message:
    needs: simulate-task
