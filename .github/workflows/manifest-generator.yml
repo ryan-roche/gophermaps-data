@@ -6,9 +6,19 @@ on:
 jobs:
   simulate-task:
     runs-on: ubuntu-latest
+    outputs:
+      added_instructions: ${{ steps.generate-manifest.outputs.added_instructions }}
+      total_instructions: ${{ steps.generate-manifest.outputs.total_instructions }}
+      included_messages: ${{ steps.generate-manifest.outputs.included_messages }}
+      skipped_messages: ${{ steps.generate-manifest.outputs.skipped_messages }}
     steps:
       - name: Simulate Return
-        run: exit 0
+        id: generate-manifest
+        run: |
+          echo "added_instructions=1" >> "$GITHUB_OUTPUT"
+          echo "total_instructions=5" >> "$GITHUB_OUTPUT"
+          echo "included_messages=3" >> "$GITHUB_OUTPUT"
+          echo "skipped_messages=2" >> "$GITHUB_OUTPUT"
 
   send-discord-message:
     name: Post Discord Webhook
@@ -35,12 +45,12 @@ jobs:
               "fields": [
               # TODO programatically populate fields depending on result of generation job
                 {
-                  "name": "📜 Instructions",
-                  "value": "- 📄 Added ??\n - 🗃️ Total: ??",
+                  "name": "📜  Instructions",
+                  "value": "- 📄  Added ${{ needs.simulate-task.outputs.added_instructions }}\n - 🗃️  Total: ${{ needs.simulate-task.outputs.total_instructions }}",
                 },
                 {
-                  "name": "📣 Server Messages",
-                  "value": "- 📥 ?? added\n - ⏭️ ?? skipped",
+                  "name": "📣  Server Messages",
+                  "value": "- 📥  ${{ needs.simulate-task.outputs.included_messages }} included\n - ⏭️  ${{ needs.simulate-task.outputs.skipped_messages }} skipped",
                 }
               ],
               "thumbnail": {
