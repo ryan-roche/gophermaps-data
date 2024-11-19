@@ -10,22 +10,62 @@ jobs:
       - name: Simulate Return
         run: exit 0
 
+  # generate-embeds:
+  #   name: Generate Webhook Embeds
+  #   needs: simulate-task
+  #   if: always()
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Check previous job result
+  #     shell: bash
+  #     run: |
+  #       if [ "${{ needs.simulate-task.result }}" == "success" ]; then
+  #           echo "Simulation task succeeded, proceeding with next steps"
+  #           # Add your success logic here
+  #       else
+  #           echo "Simulation task did not succeed, handling accordingly"
+  #           # Add your failure handling logic here
+  #       fi
+
   generate-embeds:
     name: Generate Webhook Embeds
     needs: simulate-task
     if: always()
     runs-on: ubuntu-latest
+    outputs:
+      embeds: ${{ steps.build-embeds.outputs.embeds }}
     steps:
-    - name: Check previous job result
-      shell: bash
-      run: |
-        if [ "${{ needs.simulate-task.result }}" == "success" ]; then
-            echo "Simulation task succeeded, proceeding with next steps"
-            # Add your success logic here
-        else
-            echo "Simulation task did not succeed, handling accordingly"
-            # Add your failure handling logic here
-        fi
+      - name: Build Embeds JSON
+        id: build-embeds
+        run: |
+          cat << 'EOF' >> $GITHUB_OUTPUT
+          embeds=[
+              {
+                "author": {
+                  "name": "Generate manifest.json",
+                  "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
+                  "icon_url": "https://github.com/github.png"
+                },
+                "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
+                "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
+                "fields": [
+                  {
+                    "name": "📜 Instructions",
+                    "value": "- 📄 Added ??\n - 🗃️ Total: ??"
+                  },
+                  {
+                    "name": "📣 Server Messages",
+                    "value": "- 📥 ?? added\n - ⏭️ ?? skipped"
+                  }
+                ],
+                "thumbnail": {
+                  "url": "https://github.com/actions-user.png"
+                }
+              }
+            ]
+          EOF
+  
 
   send-discord-message:
     name: Post Discord Webhook
@@ -38,32 +78,4 @@ jobs:
         key: "${{secrets.DISCORD_WEBHOOK_URL}}"
         username: "GopherMaps Data"
         avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
-        embeds: |
-          [
-            {
-              "author": {
-                "name": "Generate manifest.json",
-                "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
-                "icon_url": "https://github.com/github.png"
-              },
-              "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
-              "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-              "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
-              "fields": [
-              # TODO programatically populate fields depending on result of generation job
-                {
-                  "name": "📜 Instructions",
-                  "value": "- 📄 Added ??\n - 🗃️ Total: ??",
-                },
-                {
-                  "name": "📣 Server Messages",
-                  "value": "- 📥 ?? added\n - ⏭️ ?? skipped",
-                }
-              ],
-              "thumbnail": {
-                "url": "https://github.com/actions-user.png"
-              }
-            }
-            # TODO add extra embed for if any instructions were ill-formatted
-            # TODO add extra embed for if any serverMessages were ill-formatted
-          ]
+        embeds: ${{ needs.generate-embeds.outputs.embeds }}
