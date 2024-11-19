@@ -4,6 +4,42 @@ on:
   workflow_dispatch:  # This allows manual triggering from the GitHub UI
 
 jobs:
+  generate-json:
+    runs-on: ubuntu-latest
+    outputs:
+      discord-embed-json: ${{ steps.generate.outputs.json }}
+    steps:
+      - id: generate
+        run: |
+          cat <<EOF > embed.json
+          [
+            {
+              "author": {
+                "name": "Generate manifest.json",
+                "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
+                "icon_url": "https://github.com/github.png"
+              },
+              "title": "Job Succeeded",
+              "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+              "color": 4029719,
+              "fields": [
+                {
+                  "name": "📜 Instructions",
+                  "value": "- 📄 Added 5\n - 🗃️ Total: 10"
+                },
+                {
+                  "name": "📣 Server Messages",
+                  "value": "- 📥 3 added\n - ⏭️ 2 skipped"
+                }
+              ],
+              "thumbnail": {
+                "url": "https://github.com/actions-user.png"
+              }
+            }
+          ]
+          EOF
+          echo "::set-output name=json::$(cat embed.json)"
+
   simulate-task:
     runs-on: ubuntu-latest
     steps:
@@ -12,41 +48,13 @@ jobs:
 
   send-discord-message:
     name: Post Discord Webhook
-    needs: simulate-task
+    needs: [simulate-task, generate-json]
     if: always()
     runs-on: ubuntu-latest
     steps:
-    - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
-      with:
-        key: "${{secrets.DISCORD_WEBHOOK_URL}}"
-        username: "GopherMaps Data"
-        avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
-        embeds: |
-          [
-            {
-              "author": {
-                "name": "Generate manifest.json",
-                "url": "https://github.com/ryan-roche/gophermaps-data/actions/workflows/manifest-generator.yml",
-                "icon_url": "https://github.com/github.png"
-              },
-              "title": "${{ needs.simulate-task.result == 'success' && 'Job Succeeded' || 'Job Failed' }}",
-              "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-              "color": ${{ needs.simulate-task.result == 'success' && 4029719 || 12845056 }},
-              "fields": [
-              # TODO programatically populate fields depending on result of generation job
-                {
-                  "name": "📜 Instructions",
-                  "value": "- 📄 Added ??\n - 🗃️ Total: ??",
-                },
-                {
-                  "name": "📣 Server Messages",
-                  "value": "- 📥 ?? added\n - ⏭️ ?? skipped",
-                }
-              ],
-              "thumbnail": {
-                "url": "https://github.com/actions-user.png"
-              }
-            }
-            # TODO add extra embed for if any instructions were ill-formatted
-            # TODO add extra embed for if any serverMessages were ill-formatted
-          ]
+      - uses: "hugoalh/send-discord-webhook-ghaction@v7.0.0"
+        with:
+          key: "${{ secrets.DISCORD_WEBHOOK_URL }}"
+          username: "GopherMaps Data"
+          avatar_url: "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-data.png?raw=true"
+          embeds: ${{ fromJson(needs.generate-json.outputs.discord-embed-json) }}
