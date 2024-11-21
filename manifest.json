@@ -43,8 +43,8 @@
         "#0974f1"
       ],
       "title": "South East Bank routes fixed",
-      "body": "An issue in our database was discovered which prevented routes between the southern East Bank buildings from being calculated, resulting in a *Failed to Load Route* error.\\n\\nThis issue has been fixed, and we apologize for the inconvenience.",
-      "id": "682ac964014573e5a14623d68f7ce395663cd3c0b696f4bc291073dfba530af7"
+      "body": "An issue in our database was discovered which prevented routes between the southern East Bank buildings from being calculated, resulting in a *Failed to Load Route* error.\\n\\n This issue has been fixed, and we apologize for the inconvenience.",
+      "id": "0e42009d291aebfbe81a0f175a593cb8b98802ac047167080acc122f7933abb8"
     }
   ]
 }
