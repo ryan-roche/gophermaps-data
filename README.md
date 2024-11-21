@@ -28,6 +28,6 @@ Server Messages are given both a start date and end date.
 
 Instructions are each given their own directory, named in the format `{start-navID}-{end-navID}` and contain
 1. A file named `instructions.md` containing the images with corresponding instructions in the alt text
-2. Images named sequentially (i.e. `img1.png`, `img2.png`, etc.) that are referenced in the markdown file
+2. Sequentially-named images (i.e. `img1.png`, `img2.png`, etc.) that are referenced in the markdown file
 
 Instructions are written in the Notion database, then automatically converted into the format specified above and Pull-Requested into the repository by an automated system once their contents are approved. 
