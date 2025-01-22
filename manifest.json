@@ -1,36 +1,36 @@
 {
   "instructions": {
+    "t2a-t3a": {
+      "last_modified": "2024-08-11 17:41:25 -0500",
+      "files": [
+        "img1.jpg",
+        "instructions.md"
+      ]
+    },
     "t1a-t1b": {
       "last_modified": "2024-10-09 19:17:21 -0500",
       "files": [
-        "instructions.md",
+        "img1.jpg",
         "img2.jpg",
-        "img1.jpg"
-      ]
-    },
-    "kh4-me2": {
-      "last_modified": "2024-10-08 11:57:36 -0500",
-      "files": [
-        "img3.png",
-        "instructions.md",
-        "img2.png",
-        "img5.png",
-        "img4.png",
-        "img1.png"
+        "instructions.md"
       ]
     },
     "t1b-t2a": {
       "last_modified": "2024-08-11 17:41:25 -0500",
       "files": [
-        "instructions.md",
-        "img1.jpg"
+        "img1.jpg",
+        "instructions.md"
       ]
     },
-    "t2a-t3a": {
-      "last_modified": "2024-08-11 17:41:25 -0500",
+    "kh4-me2": {
+      "last_modified": "2024-10-08 11:57:36 -0500",
       "files": [
+        "img4.png",
+        "img5.png",
         "instructions.md",
-        "img1.jpg"
+        "img3.png",
+        "img2.png",
+        "img1.png"
       ]
     }
   },
@@ -43,8 +43,8 @@
         "#00ffa0"
       ],
       "title": "We're back!",
-      "body": "The backend for GopherMaps has been brought back online, and our transition from Google Cloud Run to Amazon EC2 is now complete. \\n\\n Since we have moved from a serverless architecture to a persistent virtual machine, the 'cold start' delays that occurred when the app's servers were contacted for the first time after a period of inactivity will no longer occur. \\n\\n **TL;DR: The app should feel a bit more responsive now!**",
-      "id": "23c1050fe604d97e09c2188a6fecfc253bfa3bbf40fe9457637f511c36976935"
+      "body": "The backend for GopherMaps has been brought back online, and our transition from Google Cloud Run to Amazon EC2 is now complete. \\n \\n Since we have moved from a serverless architecture to a persistent virtual machine, the 'cold start' delays that occurred when the app's servers were contacted for the first time after a period of inactivity will no longer occur. \\n \\n **TL;DR: The app should feel a bit more responsive now!**",
+      "id": "322b275cc527b945831cc648a7bf240b28eca638a0e36fcba3b9f1b324af7bd1"
     }
   ]
 }
