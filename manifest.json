@@ -1,36 +1,36 @@
 {
   "instructions": {
-    "kh4-me2": {
-      "last_modified": "2024-10-08 11:57:36 -0500",
-      "files": [
-        "img4.png",
-        "instructions.md",
-        "img1.png",
-        "img2.png",
-        "img3.png",
-        "img5.png"
-      ]
-    },
     "t1a-t1b": {
       "last_modified": "2024-10-09 19:17:21 -0500",
       "files": [
-        "img1.jpg",
         "instructions.md",
-        "img2.jpg"
+        "img2.jpg",
+        "img1.jpg"
+      ]
+    },
+    "kh4-me2": {
+      "last_modified": "2024-10-08 11:57:36 -0500",
+      "files": [
+        "img3.png",
+        "instructions.md",
+        "img2.png",
+        "img5.png",
+        "img4.png",
+        "img1.png"
       ]
     },
     "t1b-t2a": {
       "last_modified": "2024-08-11 17:41:25 -0500",
       "files": [
-        "img1.jpg",
-        "instructions.md"
+        "instructions.md",
+        "img1.jpg"
       ]
     },
     "t2a-t3a": {
       "last_modified": "2024-08-11 17:41:25 -0500",
       "files": [
-        "img1.jpg",
-        "instructions.md"
+        "instructions.md",
+        "img1.jpg"
       ]
     }
   },
