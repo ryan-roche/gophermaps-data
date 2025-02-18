@@ -1,14 +1,16 @@
 [tool.poetry]
-name = "notion-publisher"
+name = "notion2md-tests"
 version = "0.1.0"
 description = ""
 authors = ["Ryan <roche189@umn.edu>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.12"
 notion2md = "^2.9.0"
 python-dotenv = "^1.0.1"
+mdutils = "^1.6.0"
 
 
 [build-system]

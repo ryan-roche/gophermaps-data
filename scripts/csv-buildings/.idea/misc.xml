@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="Python 3.12 (gophermaps-backend)" />
+    <option name="sdkName" value="Poetry (csv-buildings)" />
   </component>
   <component name="DiscordProjectSettings">
     <option name="show" value="ASK" />
@@ -10,5 +10,5 @@
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="45d9717c-00f3-41da-b171-7117350e005f" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (notion-publisher)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Poetry (csv-buildings)" project-jdk-type="Python SDK" />
 </project>
