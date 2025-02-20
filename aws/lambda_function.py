@@ -1,26 +1,33 @@
+# Downloads the contents of a notion page, generates the proper directory structure for the instructions, and commits them to GitHub
 import base64
+import boto3
+import json
 import os
-import re
 import requests
-from dotenv import load_dotenv
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from notion2md.exporter.block import MarkdownExporter
 
-TEST_PAGE_URL = "https://www.notion.so/pwb2-hsec2-13e5af49bf2f8125919be7b2611f3827"
-IMAGE_EMBED_REGEX = re.compile(r'!\[.*?\]\(.*?\)')
 
-# GitHub Repository config
-TOKEN = "github_pat_???"
-OWNER = "ryan-roche"
-REPO = "gophermaps-data"
-BRANCH = "testing"
-HEADERS = {"Authorization": f"token {TOKEN}"}
+def lambda_handler(event, context):
+    page_data = json.loads(event["body"])
 
-# Discord Webhook config
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/???"
-WEBHOOK_AVATAR_URL = "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-lambda.png?raw=true"
+    edge_id = event["data"]["properties"]["Edge ID"]["title"][0]["plain_text"]
+    page_url = event["data"]["url"]
+
+    print(edge_id)
+    print(page_url)
 
 
+    response = {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"message": "Webhook received"})
+    }
+
+    return response
+
+
+# MARK: Helpers for downloading and formatting Notion page
 def download_page(page_url, edge_id):
     # Ensure the download directory is empty
     download_dir = f"/tmp/{edge_id}"
@@ -34,7 +41,6 @@ def download_page(page_url, edge_id):
 
     # Download the "raw" page contents from Notion
     MarkdownExporter(block_url=page_url, download=True, output_filename="raw", output_path=download_dir, unzipped=True).export()
-
 
 def format_markdown(edge_id):
     # Open the raw markdown file
@@ -69,7 +75,15 @@ def format_markdown(edge_id):
     return
 
 
+# MARK: Helper for commiting files to GitHub
 def commit_to_github(edge_id: str):
+    TOKEN = ""  # TODO replace with parameter store value
+    OWNER = "ryan-roche"
+    REPO = "gophermaps-data"
+    BRANCH = "testing"
+    HEADERS = {"Authorization": f"token {TOKEN}"}
+
+
     local_dir = f"/tmp/{edge_id}"
     remote_dir = f"instructions/{edge_id}"
 
@@ -138,7 +152,7 @@ def commit_to_github(edge_id: str):
     )
 
 
-# Discord Webhook stuff
+# MARK: Helpers for Discord Webhook
 class DiscordEmbedColor:
     """
     Semantic colors for webhook messages
@@ -148,6 +162,9 @@ class DiscordEmbedColor:
     SUCCESS = 0x0eb400
 
 def post_discord_webhook(edge_id):
+    DISCORD_WEBHOOK_URL = "" # TODO replace with parameter store value
+    WEBHOOK_AVATAR_URL = "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-lambda.png?raw=true"
+
     wh = DiscordWebhook(url=DISCORD_WEBHOOK_URL, username="GopherMaps Lambda", avatar_url=WEBHOOK_AVATAR_URL)
 
     # Build embed
@@ -163,34 +180,8 @@ def post_discord_webhook(edge_id):
 
     return wh
 
-
 def webhook_report_status(webhook, edge_id, success):
     webhook.embeds[0]['color'] = DiscordEmbedColor.SUCCESS if success else DiscordEmbedColor.ERROR
     webhook.embeds[0]['title'] = "Instructions Processed" if success else "Error Processing Instructions"
     webhook.embeds[0]['description'] = f"Instructions for {edge_id} processed successfully" if success else f"Error processing instructions for {edge_id}"
     webhook.edit()
-
-
-# Update page status on Notion
-def update_notion_page_status(edge_id, success):
-    pass
-
-
-if __name__ == "__main__":
-    load_dotenv()
-
-    wh = post_discord_webhook("test1")
-
-    print("Downloading page...", end="", flush=True)
-    download_page(TEST_PAGE_URL, "test1")
-    print(" done.", flush=True)
-
-    print("Formatting markdown...", end="", flush=True)
-    format_markdown("test1")
-    print(" done.", flush=True)
-
-    print("Committing to GitHub...", end="", flush=True)
-    commit_to_github("test1")
-    print(" done.", flush=True)
-
-    webhook_report_status(wh, "test1", True)
