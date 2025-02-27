@@ -1,0 +1,22 @@
+name: Process instructions from Notion
+
+on:
+  repository_dispatch:
+    types:
+      - webhook
+
+jobs:
+  process-instructions:
+    name: Process instruction data
+    runs-on: ubuntu-latest
+    steps:
+    - name: Log event info
+      run: "echo \"Event info: ${{ toJson(github.event) }}\""
+    - name: Checkout repository
+      id: checkout
+      uses: actions/checkout@v4
+    - name: Set up Python
+      id: setupPython
+      uses: actions/setup-python@v5
+    # TODO: Run the script that reformats the instruction files
+    # TODO: Commit and push the new files to the repository
