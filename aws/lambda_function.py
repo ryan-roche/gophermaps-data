@@ -204,7 +204,7 @@ def commit_to_github(edge_id):
                 "path": os.path.join("instructions", edge_id, os.path.relpath(file_path, upload_dir)),
                 "mode": "100644",
                 "type": "blob",
-                "content": base64.b64encode(content).decode("utf-8")
+                "content": base64.b64encode(content)
             })
 
     # Get the latest commit SHA and base tree SHA
