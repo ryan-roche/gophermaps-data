@@ -18,11 +18,13 @@ def main():
 
 def lambda_handler(event, context):
 
-    edge_id = event["properties"]["Edge ID"]["title"][0]["plain_text"]
-    page_url = event["url"]
+    payload = json.loads(event["body"])["data"]
 
-    writer_name = event["properties"]["Writer"]["people"][0]["name"]
-    writer_avatar_url = event["properties"]["Writer"]["people"][0]["avatar_url"]
+    edge_id = payload["properties"]["Edge ID"]["title"][0]["plain_text"]
+    page_url = payload["url"]
+
+    writer_name = payload["properties"]["Writer"]["people"][0]["name"]
+    writer_avatar_url = payload["properties"]["Writer"]["people"][0]["avatar_url"]
 
     # Get the Notion Token from Parameter Store
     ssm = boto3.client('ssm')
