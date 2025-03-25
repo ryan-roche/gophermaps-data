@@ -193,7 +193,7 @@ def webhook_report_status(webhook, edge_id, success, commit_sha):
 def commit_to_github(edge_id):
     token = os.environ['GITHUB_TOKEN']
     repo = "ryan-roche/gophermaps-data"
-    branch = "testing"
+    branch = "main"
 
     # Prepare the GitHub API URL
     api_url = f"https://api.github.com/repos/{repo}/git/trees"
