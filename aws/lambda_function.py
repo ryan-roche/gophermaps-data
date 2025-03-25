@@ -7,6 +7,7 @@ import re
 import requests
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from notion2md.exporter.block import MarkdownExporter
+from neo4j import GraphDatabase, graph
 
 IMAGE_EMBED_REGEX = re.compile(r'!\[.*?\]\(.*?\)')
 WEBHOOK_AVATAR_URL = "https://github.com/ryan-roche/gophermaps-data/blob/main/webhook-icons/gw-lambda.png?raw=true"
@@ -41,10 +42,19 @@ def lambda_handler(event, context):
 
     wh = post_discord_webhook(edge_id, writer_name, writer_avatar_url)
 
+    # Get the Neo4j credentials from Parameter Store
+    response = ssm.get_parameter(Name='/GopherMaps/aura/uri')
+    os.environ['NEO4J_URI'] = response['Parameter']['Value']
+    response = ssm.get_parameter(Name='/GopherMaps/aura/username')
+    os.environ['NEO4J_USER'] = response['Parameter']['Value']
+    response = ssm.get_parameter(Name='/GopherMaps/aura/password')
+    os.environ['NEO4J_PASSWORD'] = response['Parameter']['Value']
+
     download_page(page_url, edge_id)
     format_markdown(edge_id)
     sha = commit_to_github(edge_id)
     update_page_status(page_url)
+    update_graph_edge(edge_id)
 
     webhook_report_status(wh, edge_id, True, sha)
 
@@ -257,3 +267,23 @@ def commit_to_github(edge_id):
     # Return the new commit SHA
     return new_commit_sha
 
+
+# MARK: Neo4j Helpers
+def update_graph_edge(edge_id):
+    uri = os.environ['NEO4J_URI']
+    user = os.environ['NEO4J_USER']
+    password = os.environ['NEO4J_PASSWORD']
+
+    driver = GraphDatabase.driver(uri, auth=(user, password))
+    session = driver.session()
+
+    edges = edge_id.split("-")
+
+    query = """
+    MATCH (n {navID: $navID1})-[e]-(m {navID: $navID2})
+    SET e.hasDetailedInstructions = true
+    """
+    session.run(query, navID1=edges[0], navID2=edges[1])
+
+    session.close()
+    driver.close()
